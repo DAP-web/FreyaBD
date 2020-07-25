@@ -1,0 +1,23 @@
+CONSIDERACIONES
+	El archivo word (Freya.docx) contiene la explicacion, la investigacion
+	y los diagramas exportados de draw.io
+
+	El archivo PDF (Freya.pdf) es lo mismo que el archivo de word, lo adjuntamos
+	por si se desconfigura el formato del archivo word
+
+	En el archivo SQL Text File (freya1_script2.sql) esta el script de la base de
+	datos del proyecto junto con datos predeterminados que al correr el codigo
+	automaticamente seran ingresados a cada una de las tablas
+
+	Si el script, archivo SQL Text File, no llegase a funcionar hemos anexado el
+	archivo ER de Workbench (freya1_ER_WORKBENCH) con el que se podra crear la base
+	de datos con la funcion Forward Engineering de MySQL Workbench, sin embargo,
+	este archivo no contiene los datos predeterminados que se adjuntan en el script.
+	Si llegase a ocupar este archivo para crear la BD a traves de la funcion Forward
+	Engineering le ruego verifique en el script (freya1_script2.sql) que se anexa
+	la informacion de las tablas al final del codigo, para corroborar que la BD
+	es funcional
+
+Asimismo, si llegase a haber un problema al correr las lineas de codigo o al abrir el
+archivo Workbench, le ruego se comunique con nosotros para reenviar, si es posible, los
+archivos respectivos.
