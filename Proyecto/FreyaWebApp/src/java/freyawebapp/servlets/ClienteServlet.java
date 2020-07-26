@@ -1,8 +1,10 @@
 package freyawebapp.servlets;
 
 import freyawebapp.logic.ClientLogic;
+import freyawebapp.objects.ClientObject;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,7 +45,33 @@ public class ClienteServlet extends HttpServlet {
                 request.getSession().setAttribute("rows", rows);
                 response.sendRedirect("ClienteServlet?formid=3");
             break;
-            
+            case "2":
+                System.out.println("Code for delete...");
+                
+                //request parameters
+                strID = request.getParameter("id");
+                nID = Integer.parseInt(strID);
+                
+                //LOGIC
+                logic = new ClientLogic(strConnString);
+                rows = logic.deleteCliente(nID);
+                
+                //
+                request.getSession().setAttribute("rows", rows);
+                response.sendRedirect("ClienteServlet?formid=3");
+                
+            break;
+            case "3":
+                System.out.println("Code for select...");
+                
+                //logic
+                logic = new ClientLogic(strConnString);
+                ArrayList<ClientObject> clientArray = logic.getAllClients();
+                
+                //response
+                request.getSession().setAttribute("clientArray", clientArray);
+                response.sendRedirect("clientMain.jsp");
+            break;
                 
         }
         
