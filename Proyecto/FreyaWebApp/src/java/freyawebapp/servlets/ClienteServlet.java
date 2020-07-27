@@ -72,7 +72,39 @@ public class ClienteServlet extends HttpServlet {
                 request.getSession().setAttribute("clientArray", clientArray);
                 response.sendRedirect("clientMain.jsp");
             break;
+            case "4":
+                System.out.println("Code for update 1...");
                 
+                strID = request.getParameter("idcliente");
+                nID = Integer.parseInt(strID);
+                
+                logic = new ClientLogic(strConnString);
+                ClientObject clientObject = logic.getClientByID(nID);
+                
+                request.getSession().setAttribute("clientobject", clientObject);
+                response.sendRedirect("updateClient.jsp");
+            break;
+            case "5":
+                System.out.println("Code for update 2...");
+                
+                strID = request.getParameter("id");
+                nID = Integer.parseInt(strID);
+                nName = request.getParameter("name");
+                nLastName = request.getParameter("lastname");
+                strNumeroTelefono = request.getParameter("numeroTelefono");
+                nNumeroTelefono = Integer.parseInt(strNumeroTelefono);
+                //nNumeroTelefono = request.getParameter(nName)
+                nEmail = request.getParameter("email");
+                nPassword = request.getParameter("password");
+                
+                logic = new ClientLogic(strConnString);
+                rows = logic.updateClient(nID, nName, nLastName, strNumeroTelefono, nEmail, nPassword);
+                
+                request.getSession().setAttribute("rows", rows);
+                response.sendRedirect("ClienteServlet?formid=3");
+            break;
+            default:
+            break;
         }
         
     }

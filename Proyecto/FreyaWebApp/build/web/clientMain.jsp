@@ -4,9 +4,9 @@
     Author     : Diego Portillo
 --%>
 
+<%@page import="freyawebapp.objects.ClientObject"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Iterator"%>
-<%@page import="freyawebapp.objects.ClientObject"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -23,7 +23,7 @@
         </style>
     </head>
     <%
-        int rows = (int)request.getSession().getAttribute("rows");
+        
         ArrayList<ClientObject> array = (ArrayList<ClientObject>)
                 request.getSession().getAttribute("clientArray");
     %>
@@ -33,15 +33,7 @@
         
         <a href="newClient.html" style="font-size: 1.5em">New Client</a>
         <br><br>
-        <%
-        if (rows>0){
-            
-        %>
-        <p style="color:red;"><%= rows %> affected</p>
-            <br>
-        <%
-            }
-        %>
+        
             <table style="width:40%" border="1">
                 <tr>
                     <th>Name</th>
@@ -62,7 +54,7 @@
                     <td><%= temp.getLastname() %></td>
                     <td><%= temp.getNumeroTelefono() %></td>
                     <td><%= temp.getEmail() %></td>
-                    <td><a href="ClienteServlet?formid=2&id=<%= temp.getId() %>">Update</a></td>
+                    <td><a href="ClienteServlet?formid=4&id=<%= temp.getId() %>">Update</a></td>
                     <td><a href="ClienteServlet?formid=2&id=<%= temp.getId() %>">Delete</a></td>
                 </tr>
                 <%
