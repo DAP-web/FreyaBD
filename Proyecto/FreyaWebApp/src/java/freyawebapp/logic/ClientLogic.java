@@ -74,7 +74,7 @@ public class ClientLogic extends Logic{
     public ClientObject getClientByID (int pID){
         DatabaseX database = getDatabase();
         ArrayList<ClientObject> clientArray = new ArrayList<>();
-        String sql = "select * from freya1.cliente where id="+pID+";";
+        String sql = "select * from freya1.cliente where idcliente="+pID+";";
         ResultSet result = database.executeQuery(sql);
         
         ClientObject temp = null;
@@ -108,8 +108,8 @@ public class ClientLogic extends Logic{
     public int updateClient(int pId, String pName, String pLastName, 
             String pNumeroTelefono, String pEmail, String pPassword){
         DatabaseX database = getDatabase();
-        String sql = "UPDATE `freya1`.`cliente` SET `nombre` = '"+pName+"',"
-                + " `apellido` = '"+pLastName+"', "
+        String sql = "UPDATE `freya1`.`cliente` SET `nombre` = '"+pName+"', "
+                + "`apellido` = '"+pLastName+"', "
                 + "`numeroTelefono` = '"+pNumeroTelefono+"', "
                 + "`correoElectronico` = '"+pEmail+"', "
                 + "`contrasenia` = '"+pPassword+"' "
