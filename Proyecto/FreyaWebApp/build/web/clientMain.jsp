@@ -19,11 +19,13 @@
                 text-align:center;
                 font-size: 40px;
             }
-            
+            p{
+                color: #000000;
+            }
         </style>
     </head>
     <%
-        
+        int rows = (int)request.getSession().getAttribute("rows");
         ArrayList<ClientObject> array = (ArrayList<ClientObject>)
                 request.getSession().getAttribute("clientArray");
     %>
@@ -33,6 +35,14 @@
         
         <a href="newClient.html" style="font-size: 1.5em">New Client</a>
         <br><br>
+    <%
+    if (rows>0){
+        
+    %>
+    <p><%= rows %> affected</p>
+    <%
+    }
+    %>
         
             <table style="width:40%" border="1">
                 <tr>
