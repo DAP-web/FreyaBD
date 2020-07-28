@@ -6,18 +6,27 @@ public class ClientObject {
     private String lastname;
     private int numeroTelefono;
     private String email;
-
-    public ClientObject(int pId, String pName, String pLastname, int pNumeroTelefono, String pEmail) {
+    private String password;
+    
+    public ClientObject(int pId, String pName, String pLastname, 
+            int pNumeroTelefono, String pEmail, String pPassword) {
         setId(pId);
         setName(pName);
         setLastname(pLastname);
         setNumeroTelefono(pNumeroTelefono);
         setEmail(pEmail);
-        
+        setPassword(pPassword);
     }
+    
+    public ClientObject(int pId, String pName, String pLastname, 
+            int pNumeroTelefono, String pEmail) {
+        setId(pId);
+        setName(pName);
+        setLastname(pLastname);
+        setNumeroTelefono(pNumeroTelefono);
+        setEmail(pEmail);
+    }  
 
-    
-    
     public int getId() {
         return id;
     }
@@ -57,7 +66,14 @@ public class ClientObject {
     private void setEmail(String email) {
         this.email = email;
     }
-    
+
+    public String getPassword() {
+        return password;
+    }
+
+    private void setPassword(String password) {
+        this.password = password;
+    }
     
     
 }

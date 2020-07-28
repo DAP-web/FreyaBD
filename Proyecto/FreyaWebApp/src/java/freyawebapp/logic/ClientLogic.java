@@ -65,9 +65,58 @@ public class ClientLogic extends Logic{
             } catch (SQLException ex){
                 //Logger.getLogger(TeacherLogic.class.getName()).log(Level.SEVERE, null, ex);
                 Logger.getLogger(ClientLogic.class.getName()).log(Level.SEVERE, null, ex);
+                //Logger.getLogger(ClientLogic.class.get).log(Level.SEVERE, null, ex);
             }
         }
         return clientArray;
+    }
+    
+    public ClientObject getClientByID (int pID){
+        DatabaseX database = getDatabase();
+        ArrayList<ClientObject> clientArray = new ArrayList<>();
+        String sql = "select * from freya1.cliente where idcliente="+pID+";";
+        ResultSet result = database.executeQuery(sql);
+        
+        ClientObject temp = null;
+        
+        if(result!=null){
+            try{
+                int iId;
+                String strName;
+                String strLastName;
+                int iPhoneNumber;
+                String strEmail;
+                String strPassword;
+                
+                while(result.next()){
+                    iId = result.getInt("idcliente");
+                    strName = result.getString("nombre");
+                    strLastName = result.getString("apellido");
+                    iPhoneNumber = result.getInt("numeroTelefono");
+                    strEmail = result.getString("correoElectronico");
+                    strPassword = result.getString("contrasenia");
+                    temp = new ClientObject(iId, strName, strLastName, iPhoneNumber,strEmail, strPassword);
+                    
+                }
+            } catch (SQLException ex){
+                Logger.getLogger(ClientLogic.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return temp;
+    }
+    
+    public int updateClient(int pId, String pName, String pLastName, 
+            String pNumeroTelefono, String pEmail, String pPassword){
+        DatabaseX database = getDatabase();
+        String sql = "UPDATE `freya1`.`cliente` SET `nombre` = '"+pName+"', "
+                + "`apellido` = '"+pLastName+"', "
+                + "`numeroTelefono` = '"+pNumeroTelefono+"', "
+                + "`correoElectronico` = '"+pEmail+"', "
+                + "`contrasenia` = '"+pPassword+"' "
+                + "WHERE (`idcliente` = '"+pId+"');";
+        int rows = database.executeNonQueryRows(sql);
+        
+        return rows;
     }
     
 }

@@ -21,25 +21,25 @@ public class ClienteServlet extends HttpServlet {
                 + "autoReconnect=true&useSSL=false";
         String strformid = request.getParameter("formid");
         ClientLogic logic;
-        int nID, nNumeroTelefono, rows;
-        String nName, nLastName, nEmail, nPassword, strID, strNumeroTelefono;
+        int iID, iNumeroTelefono, rows;
+        String strName, strLastName, strEmail, strPassword, strID, strNumeroTelefono;
+        request.getSession().setAttribute("rows", 0);
         
         switch (strformid){
             case "1":
                 System.out.println("Code for insert new...");
                 
                 //al inicio pedir los parametros o datos
-                nName = request.getParameter("name");
-                nLastName = request.getParameter("lastname");
+                strName = request.getParameter("name");
+                strLastName = request.getParameter("lastname");
                 strNumeroTelefono = request.getParameter("numeroTelefono");
-                nNumeroTelefono = Integer.parseInt(strNumeroTelefono);
                 //nNumeroTelefono = request.getParameter(nName)
-                nEmail = request.getParameter("email");
-                nPassword = request.getParameter("password");
+                strEmail = request.getParameter("email");
+                strPassword = request.getParameter("password");
                 
                 //Crear un objeto Logic para mandar parametros
                 logic = new ClientLogic(strConnString);
-                rows = logic.insertNewClient(nName, nLastName, strNumeroTelefono, nEmail, nPassword);
+                rows = logic.insertNewClient(strName, strLastName, strNumeroTelefono, strEmail, strPassword);
                 
                 //PREGUNTAR ESTA ULTIMA PARTE DE GETSESSION
                 request.getSession().setAttribute("rows", rows);
@@ -50,11 +50,11 @@ public class ClienteServlet extends HttpServlet {
                 
                 //request parameters
                 strID = request.getParameter("id");
-                nID = Integer.parseInt(strID);
+                iID = Integer.parseInt(strID);
                 
                 //LOGIC
                 logic = new ClientLogic(strConnString);
-                rows = logic.deleteCliente(nID);
+                rows = logic.deleteCliente(iID);
                 
                 //
                 request.getSession().setAttribute("rows", rows);
@@ -72,7 +72,38 @@ public class ClienteServlet extends HttpServlet {
                 request.getSession().setAttribute("clientArray", clientArray);
                 response.sendRedirect("clientMain.jsp");
             break;
+            case "4":
+                System.out.println("Code for update 1...");
                 
+                strID = request.getParameter("id");
+                iID = Integer.parseInt(strID);
+                
+                logic = new ClientLogic(strConnString);
+                ClientObject clientObject = logic.getClientByID(iID);
+                
+                request.getSession().setAttribute("clientobject", clientObject);
+                response.sendRedirect("updateClient.jsp");
+            break;
+            case "5":
+                System.out.println("Code for update 2...");
+                
+                strID = request.getParameter("id");
+                iID = Integer.parseInt(strID);
+                strName = request.getParameter("name");
+                strLastName = request.getParameter("lastname");
+                strNumeroTelefono = request.getParameter("numeroTelefono");
+                //nNumeroTelefono = request.getParameter(nName)
+                strEmail = request.getParameter("email");
+                strPassword = request.getParameter("password");
+                
+                logic = new ClientLogic(strConnString);
+                rows = logic.updateClient(iID, strName, strLastName, strNumeroTelefono, strEmail, strPassword);
+                
+                request.getSession().setAttribute("rows", rows);
+                response.sendRedirect("ClienteServlet?formid=3");
+            break;
+            default:
+            break;
         }
         
     }
