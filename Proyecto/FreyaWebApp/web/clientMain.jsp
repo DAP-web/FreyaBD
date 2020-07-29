@@ -35,6 +35,8 @@
         
         <a href="newClient.html" style="font-size: 1.5em">New Client</a>
         <br><br>
+        <a href="MesasServlet?formid=3" style="font-size: 1.5em">New Client</a>
+        <br><br>
     <%
     if (rows>0){
         
