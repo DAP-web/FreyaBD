@@ -44,7 +44,7 @@
     }
     %>
         
-            <table style="width:40%" border="1">
+            <table style="width:45%" border="1">
                 <tr>
                     <th>Name</th>
                     <th>Last Name</th>
