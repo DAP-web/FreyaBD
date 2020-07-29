@@ -35,8 +35,6 @@
         
         <a href="newClient.html" style="font-size: 1.5em">New Client</a>
         <br><br>
-        <a href="MesasServlet?formid=3" style="font-size: 1.5em">New Client</a>
-        <br><br>
     <%
     if (rows>0){
         
@@ -46,7 +44,7 @@
     }
     %>
         
-            <table style="width:40%" border="1">
+            <table style="width:45%" border="1">
                 <tr>
                     <th>Name</th>
                     <th>Last Name</th>
