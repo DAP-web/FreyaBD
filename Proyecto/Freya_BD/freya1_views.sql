@@ -28,7 +28,7 @@ CREATE VIEW `facturacomplete` as
 select d.idfactura as idFactura, b.nombre as Restaurante, 
 	   c.localizacion as Ubicacion, a.nombre as name, a.apellido as lastName,
        d.fecha as Date, d.hora as Time, d.IVA as IVA, d.fastpass as fastPass,
-       d.total as Total, 
+       d.total as Total
 from cliente a, restaurante b, direccionesrestaurante c, factura d
 where d.idCliente = a.idcliente and
 	  d.idRestaurante = b.idRestaurante and
