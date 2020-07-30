@@ -1,10 +1,10 @@
 <%-- 
-    Document   : clientMain
-    Created on : Jul 26, 2020, 5:14:31 PM
-    Author     : Diego Portillo
+    Document   : modifyDR
+    Created on : 07-29-2020, 04:23:25 PM
+    Author     : VictoriaZepeda
 --%>
 
-<%@page import="freyawebapp.objects.ClientObject"%>
+<%@page import="freyawebapp.objects.DRObject"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Iterator"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -12,7 +12,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cliente Main</title>
+        <title>Direcciones Restaurante Main</title>
         <style>
             h1{
                 color: #000000;
@@ -26,16 +26,14 @@
     </head>
     <%
         int rows = (int)request.getSession().getAttribute("rows");
-        ArrayList<ClientObject> array = (ArrayList<ClientObject>)
-                request.getSession().getAttribute("clientArray");
+        ArrayList<DRObject> array = (ArrayList<DRObject>)
+                request.getSession().getAttribute("Array");
     %>
     <body bgcolor="#FFDAB9">
-        <h1>Client Main</h1>
+        <h1>Direcciones Restaurante Main</h1>
         <br><br>
         
-        <a href="newClient.html" style="font-size: 1.5em">New Client</a>
-        <br><br>
-        <a href="DRServlet?formid=3" style="font-size: 1.5em">View Direcciones Restaurante</a>
+        <a href="newDR.html" style="font-size: 1.5em">New Direccion Restaurante</a>
         <br><br>
     <%
     if (rows>0){
@@ -48,32 +46,32 @@
         
             <table style="width:45%" border="1">
                 <tr>
-                    <th>Name</th>
-                    <th>Last Name</th>
-                    <th>Phone Number</th>
-                    <th>Email Address</th>
+                    <th>Localizacion</th>
+                    <th>Codigo Postal</th>
+                    <th>Numero de Telefono</th>
                 </tr>
                 <%
-                    Iterator<ClientObject> iteArray = null;
+                    Iterator<DRObject> iteArray = null;
                     if(array!=null){
                         iteArray = array.iterator();
-                        ClientObject temp = null;
+                        DRObject temp = null;
                         while (iteArray.hasNext()){
                             temp = iteArray.next();
                 %>
                 <tr>
-                    <td><%= temp.getName() %></td>
-                    <td><%= temp.getLastname() %></td>
+                    <td><%= temp.getLocalizacion() %></td>
+                    <td><%= temp.getCodigoPostal() %></td>
                     <td><%= temp.getNumeroTelefono() %></td>
-                    <td><%= temp.getEmail() %></td>
-                    <td><a href="ClienteServlet?formid=4&id=<%= temp.getId() %>">Update</a></td>
-                    <td><a href="ClienteServlet?formid=2&id=<%= temp.getId() %>">Delete</a></td>
+                    <td><a href="DRServlet?formid=4&id=<%= temp.getIdDireccion() %>">Update</a></td>
+                    <td><a href="DRServlet?formid=2&id=<%= temp.getIdDireccion() %>">Delete</a></td>
                 </tr>
                 <%
                         }
                     }
                 %>
             </table>
+            <br>
+            <!--<a href="RestauranteServlet?formid=3">Volver</a>-->
             
     </body>
 </html>
