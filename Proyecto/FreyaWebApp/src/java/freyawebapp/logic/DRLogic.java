@@ -41,8 +41,8 @@ public class DRLogic extends Logic{
     public ArrayList<DRObject> getAllDR() {
         DatabaseX database = getDatabase();
         ArrayList<DRObject> dRArray = new ArrayList();
-        String sql = "SELECT iddireccion, localizacion, codigoPostal, "
-                + "numeroTelefono, correoElectronico FROM freya1.direccionesrestaurante;";
+        String sql = "SELECT idDireccion, localizacion, codigoPostal, "
+                + "numeroTelefono FROM freya1.direccionesrestaurante;";
         ResultSet result = database.executeQuery(sql);
         
         if(result!=null){
@@ -54,7 +54,7 @@ public class DRLogic extends Logic{
                 DRObject temp;
                 
                 while(result.next()){
-                    iIdDireccion = result.getInt("iddireccion");
+                    iIdDireccion = result.getInt("idDireccion");
                     strLocalizacion = result.getString("localizacion");
                     iCodigoPostal = result.getInt("codigoPostal");
                     iNumeroTelefono = result.getInt("numeroTelefono");
@@ -73,7 +73,7 @@ public class DRLogic extends Logic{
     public DRObject getDRByID (int pID){
         DatabaseX database = getDatabase();
         ArrayList<DRObject> dRArray = new ArrayList<>();
-        String sql = "select * from freya1.direccionesrestaurante where iddireccion="+pID+";";
+        String sql = "select * from freya1.direccionesrestaurante where idDireccion="+pID+";";
         ResultSet result = database.executeQuery(sql);
         
         DRObject temp = null;
