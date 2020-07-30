@@ -27,7 +27,7 @@
     <%
         int rows = (int)request.getSession().getAttribute("rows");
         ArrayList<DRObject> array = (ArrayList<DRObject>)
-                request.getSession().getAttribute("Array");
+                request.getSession().getAttribute("dRArray");
     %>
     <body bgcolor="#FFDAB9">
         <h1>Direcciones Restaurante Main</h1>

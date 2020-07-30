@@ -52,6 +52,7 @@
                     <th>Last Name</th>
                     <th>Phone Number</th>
                     <th>Email Address</th>
+                    <th colspan="2">Acciones</th>
                 </tr>
                 <%
                     Iterator<ClientObject> iteArray = null;
@@ -74,6 +75,8 @@
                     }
                 %>
             </table>
+            <br><br>
+            <a href="index.html"style="font-size: 1.25em">Volver al inicio</a>
             
     </body>
 </html>

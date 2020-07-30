@@ -26,7 +26,7 @@
     </head>
     <%
     DRObject drobject = (DRObject) 
-            request.getSession().getAttribute("drobject");
+            request.getSession().getAttribute("dRobject");
     %>
     <body bgcolor="#FFDAB9">
         <h1>Update Direccion Restaurante</h1>
