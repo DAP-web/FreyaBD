@@ -22,7 +22,7 @@ public class DRLogic extends Logic{
         DatabaseX database = getDatabase();
         //ENVIAR CODIGO PARA INSERTAR SQL
         String sql = "INSERT INTO `freya1`.`direccionesrestaurante` "
-                + "(`iddireccion`, `localizacion`, `codigoPostal`, `numeroTelefono')"
+                + "(`idDireccion`, `localizacion`, `codigoPostal`, `numeroTelefono`)"
                 + "VALUES (0, '"+pLocalizacion+"', '"+pCodigoPostal+"', "
                 + "'"+pNumeroTelefono+"');";
         //GET HOW MANY ROWS HAVE BEEN AFFECTED
@@ -33,7 +33,7 @@ public class DRLogic extends Logic{
         DatabaseX database = getDatabase();
         
         String sql = "DELETE FROM `freya1`.`direccionesrestaurante` "
-                + "WHERE iddireccion = '"+pID+"';";
+                + "WHERE idDireccion = '"+pID+"';";
         int rows = database.executeNonQueryRows(sql);
         return rows;
     }
@@ -86,7 +86,7 @@ public class DRLogic extends Logic{
                 int iNumeroTelefono;
                 
                 while(result.next()){
-                    iIdDireccion = result.getInt("iddireccion");
+                    iIdDireccion = result.getInt("idDireccion");
                     strLocalizacion = result.getString("localizacion");
                     iCodigoPostal = result.getInt("codigoPostal");
                     iNumeroTelefono = result.getInt("numeroTelefono");
@@ -104,9 +104,9 @@ public class DRLogic extends Logic{
             String pNumeroTelefono){
         DatabaseX database = getDatabase();
         String sql = "UPDATE `freya1`.`direccionesrestaurante` SET `localizacion` = '"+pLocalizacion+"', "
-                + "`apellido` = '"+pCodigoPostal+"', "
+                + "`codigoPostal` = '"+pCodigoPostal+"', "
                 + "`numeroTelefono` = '"+pNumeroTelefono+"' "
-                + "WHERE (`iddireccion` = '"+pId+"');";
+                + "WHERE (`idDireccion` = '"+pId+"');";
         int rows = database.executeNonQueryRows(sql);
         
         return rows;

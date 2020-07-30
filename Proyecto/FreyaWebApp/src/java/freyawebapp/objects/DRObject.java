@@ -8,7 +8,7 @@ public class DRObject {
     private int numeroTelefono;
     
     public DRObject(int pIdDireccion, String pLocalizacion, int pCodigoPostal, 
-            int pNumeroTelefono) {
+        int pNumeroTelefono) {
         setIdDireccion(pIdDireccion);
         setLocalizacion(pLocalizacion);
         setCodigoPostal(pCodigoPostal);
