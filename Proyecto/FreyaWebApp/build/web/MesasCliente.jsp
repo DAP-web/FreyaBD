@@ -27,7 +27,7 @@
         <%
         int rows = (int)request.getSession().getAttribute("rows");
         ArrayList<MesaObjects> array = (ArrayList<MesaObjects>)
-                request.getSession().getAttribute("mesaArray");
+                request.getSession().getAttribute("mesasArray");
     %>
     <body bgcolor="#FFDAB9">
         <h1>Mesas disponibles</h1>
