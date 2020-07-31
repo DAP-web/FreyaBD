@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title> Disponibilidad de Mesas </title>
+         <style>
+            h1{
+                color: #000000;
+                text-align:center;
+                font-size: 40px;
+            }
+            a{
+                color:white;
+                font-weight: bold;
+                font-size: 25px;
+            }
+
+        </style>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body bgcolor="#FFDAB9" >
+                
+        <h1>New Client</h1>
+        <br><br>
+        <form action="MesasServlet" method="post" style="color:#000000">
+            Tipo:<br>
+            <input type="text" id="tipo" name="tipo" />
+            <br><br>
+            Estado:<br>
+            <input type="text" id="estado" name="estado"/>
+            <br><br>
+            Cantidad:<br>
+            <input type="text" id="cantidad" name="cantidad"/>
+            <br><br>
+            <input type="submit" value="Send"/>
+            <input type="hidden" name="formid" value="1" />
+        </form>  
+                        
+
+            
+            
+    </body>
+</html>
