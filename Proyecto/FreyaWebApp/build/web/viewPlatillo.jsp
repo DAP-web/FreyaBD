@@ -1,6 +1,7 @@
 <%-- 
     Document   : viewPlatillo
     Created on : Jul 30, 2020, 4:14:49 PM
+    Created on : Jul 30, 2020, 6:44:07 PM
     Author     : Mario
 --%>
 
@@ -72,4 +73,3 @@
             
     </body>
 </html>
-
