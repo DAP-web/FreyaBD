@@ -1,7 +1,7 @@
 <%-- 
-    Document   : viewPlatillo
-    Created on : Jul 30, 2020, 4:14:49 PM
-    Author     : Mario
+    Document   : modifyPlatillo
+    Created on : Jul 31, 2020, 12:43:12 AM
+    Author     : Diego Portillo
 --%>
 
 <%@page import="freyawebapp.objects.PlatilloObject"%>
@@ -31,7 +31,8 @@
     <body bgcolor="#FFDAB9">
         <h1>Platillos Main</h1>
         <br><br>
-        
+        <a href="newPlatillo.html" style="font-size: 1.5em">Nuevo Platillo</a>
+        <br><br>
 
     <%
     if (rows>0){
@@ -47,6 +48,7 @@
                     <th>Name</th>
                     <th>Price</th>
                     <th>Description</th>
+                    <th colspan="2">Acciones</th>
                 </tr>
                 <%
                     Iterator<PlatilloObject> iteArray = null;
@@ -60,6 +62,8 @@
                     <td><%= temp.getName() %></td>
                     <td><%= temp.getPrice() %></td>
                     <td><%= temp.getDescription() %></td>
+                    <td><a href="PlatilloServlet?formid=4&id=<%= temp.getId() %>">Update</a></td>
+                    <td><a href="PlatilloServlet?formid=2&id=<%= temp.getId() %>">Delete</a></td>
 
                 </tr>
                 <%
@@ -68,8 +72,7 @@
                 %>
             </table>
             <br>
-            <a href="ClienteServlet?formid=3" style="font-size: 1.25em">Volver</a>
+            <a href="RestauranteServlet?formid=3" style="font-size: 1.25em">Volver</a>
             
     </body>
 </html>
-

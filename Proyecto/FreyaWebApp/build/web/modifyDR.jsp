@@ -49,6 +49,7 @@
                     <th>Localizacion</th>
                     <th>Codigo Postal</th>
                     <th>Numero de Telefono</th>
+                    <th colspan="2">Acciones</th>
                 </tr>
                 <%
                     Iterator<DRObject> iteArray = null;
@@ -71,7 +72,7 @@
                 %>
             </table>
             <br>
-            <!--<a href="RestauranteServlet?formid=3">Volver</a>-->
+            <a href="RestauranteServlet?formid=3" style="font-size: 1.25em">Volver</a>
             
     </body>
 </html>

@@ -14,8 +14,9 @@ public class RestaurantLogic extends Logic{
     public RestaurantLogic(String pConnectionString) {
         super(pConnectionString);
     }
+    
     //CODIGO PARA INSERTAR NUEVO RESTAURANTE
-    public int insertNewRestaurant (String pName, int pOpens, int pCloses, String pEmail){
+    public int insertNewRestaurant (String pName, String pOpens, String pCloses, String pEmail){
         //CONEXION A LA BASE DE DATOS
         DatabaseX database = getDatabase();
         //ENVIAR CODIGO PARA INSERTAR SQL
@@ -28,11 +29,12 @@ public class RestaurantLogic extends Logic{
         int rows = database.executeNonQueryRows(sql);
         return rows;
     }
+    
     public int deleteRestaurant (int pID) {
         DatabaseX database = getDatabase();
         
         String sql = "DELETE FROM `freya1`.`restaurante` "
-                + "WHERE idrestaurante = '"+pID+"';";
+                + "WHERE idRestaurante = '"+pID+"';";
         int rows = database.executeNonQueryRows(sql);
         return rows;
     }
@@ -40,25 +42,25 @@ public class RestaurantLogic extends Logic{
     public ArrayList<RestaurantObject> getAllRestaurants() {
         DatabaseX database = getDatabase();
         ArrayList<RestaurantObject> restaurantArray = new ArrayList();
-        String sql = "SELECT idrestaurante, nombre, horaApertura, horaCierre, correoElectronico FROM freya1.restaurante;";
+        String sql = "SELECT * FROM freya1.restaurante;";
         ResultSet result = database.executeQuery(sql);
         
         if(result!=null){
             try{
                 int iId;
                 String strName;
-                int iOpens;
-                int iCloses;
+                String strOpens;
+                String strCloses;
                 String strEmail;
                 RestaurantObject temp;
                 
                 while(result.next()){
-                    iId = result.getInt("idrestaurante");
+                    iId = result.getInt("idRestaurante");
                     strName = result.getString("nombre");
                     strEmail = result.getString("correoElectronico");
-                    iCloses = result.getInt("horaCierre");
-                    iOpens = result.getInt("horaApertura");
-                    temp = new RestaurantObject(iId, strName, strEmail, iOpens, iCloses);
+                    strCloses = result.getString("horaCierre");
+                    strOpens = result.getString("horaApertura");
+                    temp = new RestaurantObject(iId, strName, strOpens, strCloses, strEmail);
                     restaurantArray.add(temp);
                 }
             } catch (SQLException ex){
@@ -83,16 +85,16 @@ public class RestaurantLogic extends Logic{
                 int iId;
                 String strName;
                 String strEmail;
-                int iOpens;
-                int iCloses;
+                String iOpens;
+                String iCloses;
                 
                 while(result.next()){
-                    iId = result.getInt("idrestaurante");
+                    iId = result.getInt("idRestaurante");
                     strName = result.getString("nombre");
                     strEmail = result.getString("correoElectronico");
-                    iCloses = result.getInt("horaCierre");
-                    iOpens = result.getInt("horaApertura");
-                    temp = new RestaurantObject(iId, strName, strEmail, iOpens, iCloses);
+                    iCloses = result.getString("horaCierre");
+                    iOpens = result.getString("horaApertura");
+                    temp = new RestaurantObject(iId, strName, iOpens, iCloses, strEmail);
                     
                 }
             } catch (SQLException ex){
@@ -102,19 +104,19 @@ public class RestaurantLogic extends Logic{
         return temp;
     }
     
-    public int updateRestaurant(int pId, String pName, int pOpens, 
-            String pEmail, int pCloses){
+    public int updateRestaurant(int pId, String pName, String pOpens, 
+            String pCloses, String pEmail){
         DatabaseX database = getDatabase();
         String sql = "UPDATE `freya1`.`restaurante` SET `nombre` = '"+pName+"', "
-                + "`correo electronico` = '"+pEmail+"', "
-                + "`hora de apertura` = '"+pOpens+"', "
-                + "`hora de cierre` = '"+pCloses+"' "
-                + "WHERE (`idRestaurante` = '"+pId+"');";
+                + "`horaApertura` = '"+pOpens+"', "
+                + "`horaCierre` = '"+pCloses+"' "
+                + "`correoElectronico` = '"+pEmail+"', "               
+                + "WHERE (`idRestaurante` = "+pId+");";
         int rows = database.executeNonQueryRows(sql);
         
         return rows;
     }
-
+/*
     public int insertNewRestaurant(String strName, String iOpens, String iCloses, String strEmail) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -122,5 +124,5 @@ public class RestaurantLogic extends Logic{
     public int updateRestaurant(int iID, String strName, String iOpens, String iCloses, String strEmail) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+    */
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package freyawebapp.servlets;
 import freyawebapp.logic.PlatillosLogic;
 import freyawebapp.objects.PlatilloObject;
@@ -45,7 +40,7 @@ public class PlatilloServlet extends HttpServlet {
                 
                 //PREGUNTAR ESTA ULTIMA PARTE DE GETSESSION
                 request.getSession().setAttribute("rows", rows);
-                response.sendRedirect("PlatilloServlet?formid=3");
+                response.sendRedirect("PlatilloServlet?formid=6");
             break;
             case "2":
                 System.out.println("Code for delete...");
@@ -60,7 +55,7 @@ public class PlatilloServlet extends HttpServlet {
                 
                 //
                 request.getSession().setAttribute("rows", rows);
-                response.sendRedirect("PlatilloServlet?formid=3");
+                response.sendRedirect("PlatilloServlet?formid=6");
                 
             break;
             case "3":
@@ -72,7 +67,7 @@ public class PlatilloServlet extends HttpServlet {
                 
                 //response
                 request.getSession().setAttribute("platilloArray", platilloArray);
-                response.sendRedirect("clientMain.jsp");
+                response.sendRedirect("viewPlatillo.jsp");
             break;
             case "4":
                 System.out.println("Code for update 1...");
@@ -81,7 +76,7 @@ public class PlatilloServlet extends HttpServlet {
                 iID = Integer.parseInt(strID);
                 
                 logic = new PlatillosLogic(strConnString);
-                PlatilloObject platilloObject = logic.getPlatillotByID(iID);
+                PlatilloObject platilloObject = logic.getPlatilloByID(iID);
                 
                 request.getSession().setAttribute("platillobject", platilloObject);
                 response.sendRedirect("updatePlatillo.jsp");
@@ -99,8 +94,18 @@ public class PlatilloServlet extends HttpServlet {
                 rows = logic.updateClient(iID, strName, strPrice, strDescription);
                 
                 request.getSession().setAttribute("rows", rows);
-                response.sendRedirect("PlatilloServlet?formid=3");
+                response.sendRedirect("PlatilloServlet?formid=6");
             break;
+            case "6":
+                System.out.println("Code for select...");
+                
+                //logic
+                logic = new PlatillosLogic(strConnString);
+                ArrayList<PlatilloObject> platilloarray = logic.getAllPlatillos();
+                
+                //response
+                request.getSession().setAttribute("platilloArray", platilloarray);
+                response.sendRedirect("modifyPlatillo.jsp");
             default:
             break;
         }

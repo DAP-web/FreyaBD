@@ -22,7 +22,7 @@ public class RestauranteServlet extends HttpServlet {
         String strformid = request.getParameter("formid");
         RestaurantLogic logic;
         int iID, iNumeroTelefono, rows;
-        String strName, iOpens, iCloses, strEmail, strID;
+        String strName, strOpens, strCloses, strEmail, strID;
         request.getSession().setAttribute("rows", 0);
         
         switch (strformid){
@@ -31,18 +31,18 @@ public class RestauranteServlet extends HttpServlet {
                 
                 //al inicio pedir los parametros o datos
                 strName = request.getParameter("name");
-                iOpens = request.getParameter("hora de apertura");
-                iCloses = request.getParameter("hora de cierre");
+                strOpens = request.getParameter("horaapertura");
+                strCloses = request.getParameter("horacierre");
                 //nNumeroTelefono = request.getParameter(nName)
                 strEmail = request.getParameter("email");
                 
                 //Crear un objeto Logic para mandar parametros
                 logic = new RestaurantLogic(strConnString);
-                rows = logic.insertNewRestaurant(strName, iOpens, iCloses, strEmail);
+                rows = logic.insertNewRestaurant(strName, strOpens, strCloses, strEmail);
                 
                 //PREGUNTAR ESTA ULTIMA PARTE DE GETSESSION
                 request.getSession().setAttribute("rows", rows);
-                response.sendRedirect("RestaurantServlet?formid=3");
+                response.sendRedirect("RestauranteServlet?formid=3");
             break;
             case "2":
                 System.out.println("Code for delete...");
@@ -57,7 +57,7 @@ public class RestauranteServlet extends HttpServlet {
                 
                 //
                 request.getSession().setAttribute("rows", rows);
-                response.sendRedirect("RestaurantServlet?formid=3");
+                response.sendRedirect("RestauranteServlet?formid=3");
                 
             break;
             case "3":
@@ -65,10 +65,10 @@ public class RestauranteServlet extends HttpServlet {
                 
                 //logic
                 logic = new RestaurantLogic(strConnString);
-                ArrayList<RestaurantObject> clientArray = logic.getAllRestaurants();
+                ArrayList<RestaurantObject> restaurantArray = logic.getAllRestaurants();
                 
                 //response
-                request.getSession().setAttribute("restaurantArray", clientArray);
+                request.getSession().setAttribute("restaurantArray", restaurantArray);
                 response.sendRedirect("restaurantMain.jsp");
             break;
             case "4":
@@ -89,17 +89,17 @@ public class RestauranteServlet extends HttpServlet {
                 strID = request.getParameter("id");
                 iID = Integer.parseInt(strID);
                 strName = request.getParameter("name");
-                iOpens = request.getParameter("hora de apertura");
-                iCloses = request.getParameter("hora de cierre");
+                strOpens = request.getParameter("horaapertura");
+                strCloses = request.getParameter("horacierre");
                 //nNumeroTelefono = request.getParameter(nName)
                 strEmail = request.getParameter("email");
                 //strPassword = request.getParameter("password");
                 
                 logic = new RestaurantLogic(strConnString);
-                rows = logic.updateRestaurant(iID, strName, iOpens, iCloses, strEmail);
+                rows = logic.updateRestaurant(iID, strName, strOpens, strCloses, strEmail);
                 
                 request.getSession().setAttribute("rows", rows);
-                response.sendRedirect("RestaurantServlet?formid=3");
+                response.sendRedirect("RestauranteServlet?formid=3");
             break;
             default:
             break;

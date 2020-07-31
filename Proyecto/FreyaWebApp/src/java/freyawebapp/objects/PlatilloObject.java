@@ -16,7 +16,6 @@ public class PlatilloObject {
   
     }
 
-
     public int getId() {
         return id;
     }

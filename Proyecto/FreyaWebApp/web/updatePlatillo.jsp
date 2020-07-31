@@ -27,7 +27,7 @@
     </head>
     <%
     PlatilloObject PlatilloObject = (PlatilloObject) 
-            request.getSession().getAttribute("PlatilloObject");
+            request.getSession().getAttribute("platillobject");
     %>
     <body bgcolor="#FFDAB9">
         <h1>Update Platillo</h1>
@@ -45,7 +45,7 @@
             <br><br>
             <input type="submit" value="Send" />
             <input type="hidden" name="formid" value="5" />
-
+            <input type="hidden" name="id" value="<%= PlatilloObject.getId() %>" />
         </form>
     </body>
 </html>
