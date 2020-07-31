@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Diego%20Portillo/Desktop/BASE%20DE%20DATOS/Proyecto_Git/FreyaBD/Proyecto/FreyaWebApp/src/java/freyawebapp/objects/ClientObject.java</file>
-            <file>file:/C:/Users/Diego%20Portillo/Desktop/BASE%20DE%20DATOS/Proyecto_Git/FreyaBD/Proyecto/FreyaWebApp/src/java/freyawebapp/logic/ClientLogic.java</file>
-            <file>file:/C:/Users/Diego%20Portillo/Desktop/BASE%20DE%20DATOS/Proyecto_Git/FreyaBD/Proyecto/FreyaWebApp/src/java/freyawebapp/servlets/ClienteServlet.java</file>
+            <file>file:/C:/Users/accom/Desktop/FreyaBD/Proyecto/FreyaWebApp/web/Platillos.jsp</file>
+            <file>file:/C:/Users/accom/Desktop/FreyaBD/Proyecto/FreyaWebApp/web/updateClient.jsp</file>
+            <file>file:/C:/Users/accom/Desktop/FreyaBD/Proyecto/FreyaWebApp/web/newClient.html</file>
+            <file>file:/C:/Users/accom/Desktop/FreyaBD/Proyecto/FreyaWebApp/web/Mesas.html</file>
         </group>
     </open-files>
 </project-private>
