@@ -5,7 +5,6 @@
 --%>
 
 <%@page import="freyawebapp.objects.PlatilloObject"%>
-<%@page import="freyawebapp.objects.DRObject"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Iterator"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
