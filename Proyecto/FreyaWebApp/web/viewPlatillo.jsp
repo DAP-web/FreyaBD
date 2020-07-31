@@ -1,71 +1,74 @@
 <%-- 
-    Document   : newjsp
-    Created on : Jul 28, 2020, 11:22:49 PM
+    Document   : viewPlatillo
+    Created on : Jul 30, 2020, 4:14:49 PM
     Author     : Mario
 --%>
 
+<%@page import="freyawebapp.objects.PlatilloObject"%>
+<%@page import="freyawebapp.objects.DRObject"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Iterator"%>
-<%@page import="freyawebapp.objects.PlatillosObjects"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cliente Main</title>
+    <title>Platillos Main</title>
         <style>
             h1{
                 color: #000000;
                 text-align:center;
                 font-size: 40px;
             }
-            
+            p{
+                color: #000000;
+            }
         </style>
     </head>
     <%
         int rows = (int)request.getSession().getAttribute("rows");
-        ArrayList<PlatillosObjects> array = (ArrayList<PlatillosObjects>)
-                request.getSession().getAttribute("platillosArray");
+        ArrayList<PlatilloObject> array = (ArrayList<PlatilloObject>)
+                request.getSession().getAttribute("platilloArray");
     %>
     <body bgcolor="#FFDAB9">
-        <h1>Client Main</h1>
+        <h1>Platillos Main</h1>
         <br><br>
         
-        <a href="newClient.html" style="font-size: 1.5em">New Client</a>
-        <br><br>
-        <%
-        if (rows>0){
-            
-        %>
-        <p style="color:red;"><%= rows %> affected</p>
-            <br>
-        <%
-            }
-        %>
-            <table style="width:40%" border="1">
+
+    <%
+    if (rows>0){
+        
+    %>
+    <p><%= rows %> affected</p>
+    <%
+    }
+    %>
+        
+            <table style="width:45%" border="1">
                 <tr>
                     <th>Name</th>
                     <th>Price</th>
                     <th>Description</th>
                 </tr>
                 <%
-                    Iterator<PlatillosObjects> iteArray = null;
+                    Iterator<PlatilloObject> iteArray = null;
                     if(array!=null){
                         iteArray = array.iterator();
-                        PlatillosObjects temp = null;
+                        PlatilloObject temp = null;
                         while (iteArray.hasNext()){
                             temp = iteArray.next();
                 %>
                 <tr>
                     <td><%= temp.getName() %></td>
                     <td><%= temp.getPrice() %></td>
-                    <td><%= temp.getDescription()%></td>
+                    <td><%= temp.getDescription() %></td>
+
                 </tr>
                 <%
                         }
                     }
                 %>
             </table>
+            <br>
+            <a href="ClienteServlet?formid=3">Volver</a>
             
     </body>
 </html>
