@@ -38,7 +38,7 @@ public class MesasLogic extends Logic {
     public ArrayList<MesaObjects> getAllMesas() {
         DatabaseX database = getDatabase();
         ArrayList<MesaObjects> mesasArray = new ArrayList();
-        String sql = "SELECT idMesasa, tipo, estado, cantidad FROM freya1.mesas;";
+        String sql = "SELECT idmesas, tipo, estado, cantidad FROM freya1.mesas;";
         ResultSet result = database.executeQuery(sql);
         
             if (result!=null){
