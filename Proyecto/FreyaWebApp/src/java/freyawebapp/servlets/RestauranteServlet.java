@@ -1,7 +1,10 @@
 package freyawebapp.servlets;
 
+import freyawebapp.logic.RestaurantLogic;
+import freyawebapp.objects.RestaurantObject;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +16,94 @@ public class RestauranteServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String strConnString = "jdbc:mysql://localhost/freya1?"
+                + "user=root&password=12345&"
+                + "autoReconnect=true&useSSL=false";
+        String strformid = request.getParameter("formid");
+        RestaurantLogic logic;
+        int iID, iNumeroTelefono, rows;
+        String strName, iOpens, iCloses, strEmail, strID;
+        request.getSession().setAttribute("rows", 0);
+        
+        switch (strformid){
+            case "1":
+                System.out.println("Code for insert new...");
+                
+                //al inicio pedir los parametros o datos
+                strName = request.getParameter("name");
+                iOpens = request.getParameter("hora de apertura");
+                iCloses = request.getParameter("hora de cierre");
+                //nNumeroTelefono = request.getParameter(nName)
+                strEmail = request.getParameter("email");
+                
+                //Crear un objeto Logic para mandar parametros
+                logic = new RestaurantLogic(strConnString);
+                rows = logic.insertNewRestaurant(strName, iOpens, iCloses, strEmail);
+                
+                //PREGUNTAR ESTA ULTIMA PARTE DE GETSESSION
+                request.getSession().setAttribute("rows", rows);
+                response.sendRedirect("RestaurantServlet?formid=3");
+            break;
+            case "2":
+                System.out.println("Code for delete...");
+                
+                //request parameters
+                strID = request.getParameter("id");
+                iID = Integer.parseInt(strID);
+                
+                //LOGIC
+                logic = new RestaurantLogic(strConnString);
+                rows = logic.deleteRestaurant(iID);
+                
+                //
+                request.getSession().setAttribute("rows", rows);
+                response.sendRedirect("RestaurantServlet?formid=3");
+                
+            break;
+            case "3":
+                System.out.println("Code for select...");
+                
+                //logic
+                logic = new RestaurantLogic(strConnString);
+                ArrayList<RestaurantObject> clientArray = logic.getAllRestaurants();
+                
+                //response
+                request.getSession().setAttribute("restaurantArray", clientArray);
+                response.sendRedirect("restaurantMain.jsp");
+            break;
+            case "4":
+                System.out.println("Code for update 1...");
+                
+                strID = request.getParameter("id");
+                iID = Integer.parseInt(strID);
+                
+                logic = new RestaurantLogic(strConnString);
+                RestaurantObject RestaurantObject = logic.getRestaurantByID(iID);
+                
+                request.getSession().setAttribute("restaurantObject", RestaurantObject);
+                response.sendRedirect("updateRestaurant.jsp");
+            break;
+            case "5":
+                System.out.println("Code for update 2...");
+                
+                strID = request.getParameter("id");
+                iID = Integer.parseInt(strID);
+                strName = request.getParameter("name");
+                iOpens = request.getParameter("hora de apertura");
+                iCloses = request.getParameter("hora de cierre");
+                //nNumeroTelefono = request.getParameter(nName)
+                strEmail = request.getParameter("email");
+                //strPassword = request.getParameter("password");
+                
+                logic = new RestaurantLogic(strConnString);
+                rows = logic.updateRestaurant(iID, strName, iOpens, iCloses, strEmail);
+                
+                request.getSession().setAttribute("rows", rows);
+                response.sendRedirect("RestaurantServlet?formid=3");
+            break;
+            default:
+            break;
+        }
         
     }
 
