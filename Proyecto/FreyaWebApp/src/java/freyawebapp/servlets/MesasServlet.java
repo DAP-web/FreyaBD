@@ -70,9 +70,48 @@ public class MesasServlet extends HttpServlet {
                 request.getSession().setAttribute("mesasArray", mesasArray);
                 response.sendRedirect("MesasRstaurante.jsp");
             break;
-                //case 4 para update 1
-            //case 5 para update 2
-            //case 6 va a ser el mismo case 3 pero me va a redirigir hacia MesasCliente.jsp
+            //case 4 para update 1
+            case "4":
+                System.out.println("Code for update 1...");
+                
+                strID = request.getParameter("id");
+                nID = Integer.parseInt(strID);
+                
+                logic = new MesasLogic(strConnString);
+                MesaObjects mesaObjects = logic.getMesaByID(nID);
+                
+                request.getSession().setAttribute("mesaObjects", mesaObjects);
+                response.sendRedirect("UpdateMesas.jsp");
+            break;
+             //case 5 para update 2
+            case "5":
+                System.out.println("Code for update 2...");
+                strID = request.getParameter("id");
+                nID = Integer.parseInt(strID);
+                nTipo = request.getParameter("tipo");
+                nEstado = request.getParameter("estado");
+                strCantidad = request.getParameter("cantidad");
+                nCantidad = Integer.parseInt(strCantidad);
+                
+                logic = new MesasLogic(strConnString);
+                rows = logic.updateMesas(nID, nTipo, nEstado, nCantidad);
+                
+                request.getSession().setAttribute("rows", rows);
+                response.sendRedirect("MesasServlet?formid=3");
+                break;
+               //case 6 va a ser el mismo case 3 pero me va a redirigir hacia MesasCliente.jsp 
+                case "6":
+                System.out.println("Code for select...");
+                
+                //logic
+                logic = new MesasLogic(strConnString);
+                ArrayList<MesaObjects> mesasarray = logic.getAllMesas();
+                
+                // respuesta
+                request.getSession().setAttribute("mesasArray", mesasarray);
+                response.sendRedirect("MesasRstaurante.jsp");
+                default:
+                break;
                 
         
         }

@@ -18,7 +18,7 @@ public class MesasLogic extends Logic {
      //Codigo para insertar nueva mesa
     public int insertNewMesa ( String pTipo, String pEstado, int pCantidad){
        // Conexión a la base de datos 
-       DatabaseX database = getDatebase ();
+       DatabaseX database = getDatabase ();
        //Enviar el código para insertar SQL 
                String sql = "INSERT INTO `freya1`.`mesas`"
                       + "(`idmesas`, `tipo`, `estado`, `cantidad`) "
@@ -62,12 +62,44 @@ public class MesasLogic extends Logic {
             }
          }
         return mesasArray;
-       
-                      
     }
-
-    private DatabaseX getDatebase() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public MesaObjects getMesaByID (int pID){
+        DatabaseX database = getDatabase();
+        ArrayList<MesaObjects> mesasArray = new ArrayList<>();
+        String sql = "select * from freya1.mesas where idmesas="+pID+";";
+        ResultSet result = database.executeQuery(sql);
+        
+        MesaObjects temp = null;
+        
+        if(result!=null){
+            try{
+                int iId;
+                String strTipo;
+                String strEstado;
+                int iCantidad;
+                
+                while(result.next()){
+                    iId = result.getInt("idmesas");
+                    strTipo = result.getString("tipo");
+                    strEstado = result.getString("estdo");
+                    iCantidad = result.getInt("cantidad");
+                    temp = new MesaObjects(iId, strTipo, strEstado, iCantidad);
+                } 
+                    
+            } catch (SQLException ex) {
+                Logger.getLogger(MesasLogic.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return temp; 
     }
+            public int updateMesas(int pId, String pTipo, String pEstado, int pCantidad){
+            DatabaseX database = getDatabase();
+            String sql = "UPDATE `freya1`.`mesas` "
+                    + "SET `tipo` = '"+pTipo+"', `estado` = '"+pEstado+"', "
+                    + "`cantidad` = "+pCantidad+" WHERE (`idmesas` = "+pId+");";
+            int rows = database.executeNonQueryRows(sql);
+            
+            return rows;
+            }
     
 }
