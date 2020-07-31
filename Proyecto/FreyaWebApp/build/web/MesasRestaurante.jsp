@@ -28,7 +28,7 @@
                 request.getSession().getAttribute("mesasArray"); 
     %>
     <body bgcolor="#FFDAB9">
-                <h1>New Mesas </h1>
+                <h1>New Mesas</h1>
         <br><br>
         
         <a href="Mesas.html" style="font-size: 1.5em">New Mesas</a>
@@ -60,7 +60,7 @@
                     <td><%= temp.getEstado() %></td>
                     <td><%= temp.getTipo() %></td>
                     <td><%= temp.getCantidad() %></td>
-                    <td><a href="MesasServlet?formid=2&id=<%= temp.getId() %>">Update</a></td>
+                    <td><a href="MesasServlet?formid=4&id=<%= temp.getId() %>">Update</a></td>
                     <td><a href="MesasServlet?formid=2&id=<%= temp.getId() %>">Delete</a></td>
                 </tr>
                 <%

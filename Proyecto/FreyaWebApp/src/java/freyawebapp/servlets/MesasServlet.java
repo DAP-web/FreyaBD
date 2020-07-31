@@ -70,7 +70,9 @@ public class MesasServlet extends HttpServlet {
                 request.getSession().setAttribute("mesasArray", mesasArray);
                 response.sendRedirect("MesasRstaurante.jsp");
             break;
-                
+                //case 4 para update 1
+            //case 5 para update 2
+            //case 6 va a ser el mismo case 3 pero me va a redirigir hacia MesasCliente.jsp
                 
         
         }

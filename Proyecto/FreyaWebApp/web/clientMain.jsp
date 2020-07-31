@@ -37,6 +37,8 @@
         <br><br>
         <a href="DRServlet?formid=3" style="font-size: 1.5em">View Direcciones Restaurante</a>
         <br><br>
+        <a href="MesasServlet?formid=3" style="font-size: 1.5em">View Mesas</a>
+        <br><br>
     <%
     if (rows>0){
         
