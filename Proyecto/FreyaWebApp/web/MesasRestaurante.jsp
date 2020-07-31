@@ -71,6 +71,7 @@
                     }
                 %>
             </table>
-
+            <br>
+            <a href="RestauranteServlet?formid=3" style="font-size: 1.25em">Volver</a>
     </body>
 </html>

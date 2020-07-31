@@ -1,6 +1,6 @@
 <%-- 
-    Document   : clientemesaMain
-    Created on : Jul 30, 2020, 2:16:58 PM
+    Document   : facturacomplete
+    Created on : Jul 31, 2020, 1:41:20 AM
     Author     : Diego Portillo
 --%>
 
@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Reservas</title>
+        <title>Registro de Facturas</title>
         <style>
             h1{
                 color: #000000;
@@ -28,10 +28,10 @@
         </style>
     </head>
     <body bgcolor="#FFDAB9">
-        <h1>Reservas</h1>
-        <h3>Cliente, mesa y hora de reserva</h3>
-        <p>Aquí irá una view que permita ver y modificar las reservas de las mesas 
-        que los clientes han hecho.</p>
+        <h1>Registro de Facturas</h1>
+        <h3>Facturas de todos los clientes y pedidos</h3>
+        <p>Aquí irá una view que permita ver y modificar 
+            las facturas de cada cliente que ordene</p>
         <br><br>
         <a href="RestauranteServlet?formid=3" style="font-size: 1.25em">Volver</a>
     </body>
