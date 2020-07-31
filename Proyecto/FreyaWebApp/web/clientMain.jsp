@@ -35,9 +35,11 @@
         
         <a href="newClient.html" style="font-size: 1.5em">New Client</a>
         <br><br>
-        <a href="DRServlet?formid=3" style="font-size: 1.5em">View Direcciones Restaurante</a>
+        <a href="DRServlet?formid=3" style="font-size: 1.5em">Ver Direcciones Restaurante</a>
         <br><br>
-        <a href="MesasServlet?formid=3" style="font-size: 1.5em">View Mesas</a>
+        <a href="MesasServlet?formid=3" style="font-size: 1.5em">Ver Mesas</a>
+        <br><br>
+        <a href="PlatilloServlet?formid=3" style="font-size: 1.5em">Ver Platillos</a>
         <br><br>
     <%
     if (rows>0){

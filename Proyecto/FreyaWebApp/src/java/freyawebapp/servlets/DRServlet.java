@@ -101,6 +101,17 @@ public class DRServlet extends HttpServlet {
                 request.getSession().setAttribute("rows", rows);
                 response.sendRedirect("DRServlet?formid=3");
             break;
+            case "6":
+                System.out.println("Code for select 2...");
+                
+                //logic
+                logic = new DRLogic(strConnString);
+                ArrayList<DRObject> drArray = logic.getAllDR();
+                
+                //response
+                request.getSession().setAttribute("dRArray", drArray);
+                response.sendRedirect("modifyDR.jsp");
+            break;
             default:
             break;
         }

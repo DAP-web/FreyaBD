@@ -1,12 +1,8 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+
 <html>
     <head>
-        <title>Nuevo Platillo</title>
+        <title>New Platillo</title>
         <style>
             h1{
                 color: #000000;
@@ -24,17 +20,22 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body bgcolor="#FFDAB9">
-         <h1>New Plate</h1>
+        
+        <h1>New Platillo</h1>
         <br><br>
-        <form action="PlatillosServlet" method="post" style="color:#000000">
+        <form action="PlatilloServlet" method="post" style="color:#000000">
             Name:<br>
-            <input type="text" id="name" name="name"/>
+            <input type="text" id="name" name="name" />
             <br><br>
             Price:<br>
-            <input type="text" id="price" name="price"/>
+            <input type="text" id="price" name="price" />
             <br><br>
             Description:<br>
-            <input type="text" id="description" name="description"/>
+            <input type="text" id="description" name="description" />
+            <br><br>
+            <input type="submit" value="Send" />
+            <input type="hidden" name="formid" value="1" />
         </form>
+
     </body>
 </html>

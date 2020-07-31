@@ -24,28 +24,27 @@ public class PlatillosLogic extends Logic{
         DatabaseX database = getDatabase();
         //ENVIAR CODIGO PARA INSERTAR SQL
         String sql = "INSERT INTO `freya1`.`platillos` "
-                + "(`idplatillos`, `nombre`, `precio`, `detalle`,"
-                + "VALUES (0, '"+pName+"', '"+pPrice+"', "
+                + "(`idplatillos`, `nombrePlatillo`, `precio`, `detalle` "
+                + "VALUES (0, '"+pName+"', "+pPrice+", "
                 + "'"+pDescription+"');";
         //GET HOW MANY ROWS HAVE BEEN AFFECTED
         int rows = database.executeNonQueryRows(sql);
         return rows;
     }
 
-   
     public int deletePlatillo (int pID) {
         DatabaseX database = getDatabase();
         
-        String sql = "DELETE FROM `freya1`.`platillo` "
-                + "WHERE idplatillo = '"+pID+"';";
+        String sql = "DELETE FROM `freya1`.`platillos` "
+                + "WHERE idplatillos = '"+pID+"';";
         int rows = database.executeNonQueryRows(sql);
         return rows;
     }
     
-    public ArrayList<PlatilloObject> getAllPlatillo() {
+    public ArrayList<PlatilloObject> getAllPlatillos() {
         DatabaseX database = getDatabase();
         ArrayList<PlatilloObject> platilloArray = new ArrayList();
-        String sql = "SELECT idplatillos, nombre, precio, detalle FROM freya1.cliente;";
+        String sql = "SELECT * FROM freya1.platillos;";
         ResultSet result = database.executeQuery(sql);
         
         if(result!=null){
@@ -58,7 +57,7 @@ public class PlatillosLogic extends Logic{
                 
                 while(result.next()){
                     iId = result.getInt("idplatillos");
-                    strName = result.getString("nombre");
+                    strName = result.getString("nombrePlatillo");
                     iPrice = result.getInt("precio");
                     strDescription = result.getString("detalle");
                     temp = new PlatilloObject(iId, strName, iPrice, strDescription );
@@ -76,7 +75,7 @@ public class PlatillosLogic extends Logic{
     public PlatilloObject getPlatilloByID (int pID){
         DatabaseX database = getDatabase();
         ArrayList<PlatilloObject> platilloArray = new ArrayList<>();
-        String sql = "select * from freya1.platillo where idplatillo="+pID+";";
+        String sql = "select * from freya1.platillos where idplatillos="+pID+";";
         ResultSet result = database.executeQuery(sql);
         
         PlatilloObject temp = null;
@@ -89,8 +88,8 @@ public class PlatillosLogic extends Logic{
                 String strDescription;
                 
                 while(result.next()){
-                    iId = result.getInt("idcliente");
-                    strName = result.getString("nombre");
+                    iId = result.getInt("idplatillos");
+                    strName = result.getString("nombrePlatillo");
                     iPrice = result.getInt("precio");
                     strDescription = result.getString("detalle");
                     temp = new PlatilloObject(iId, strName, iPrice, strDescription);
@@ -106,21 +105,13 @@ public class PlatillosLogic extends Logic{
     public int updateClient(int pId, String pName, String pPrice, 
             String pDescription){
         DatabaseX database = getDatabase();
-        String sql = "UPDATE `freya1`.`cliente` SET `nombre` = '"+pName+"', "
+        String sql = "UPDATE `freya1`.`platillos` SET `nombrePlatillo` = '"+pName+"', "
                 + "`precio` = '"+pPrice+"', "
                 + "`detalle` = '"+pDescription+"', "
-                + "WHERE (`idplatillo` = '"+pId+"');";
+                + "WHERE (`idplatillos` = '"+pId+"');";
         int rows = database.executeNonQueryRows(sql);
         
         return rows;
-    }
-
-    public ArrayList<PlatilloObject> getAllPlatillos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public PlatilloObject getPlatillotByID(int iID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

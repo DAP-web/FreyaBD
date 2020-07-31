@@ -3,26 +3,18 @@ package freyawebapp.objects;
 public class RestaurantObject {
     private int id;
     private String name;
-    private int opens;
-    private int closes;
+    private String opens;
+    private String closes;
     private String email;
     
-    public RestaurantObject(int pId, String pName, int pOpens, 
-            int pCloses, String pEmail) {
+    public RestaurantObject(int pId, String pName, String pOpens, 
+            String pCloses, String pEmail) {
         setId(pId);
         setName(pName);
         setOpens (pOpens);
         setCloses(pCloses);
         setEmail(pEmail);
     } 
-
-    public RestaurantObject(int iId, String strName, int iPhoneNumber, int iOpens, int iCloses) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public RestaurantObject(int iId, String strName, String strEmail, int iOpens, int iCloses) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     public int getId() {
         return id;
@@ -40,11 +32,11 @@ public class RestaurantObject {
         this.name = name;
     }
 
-    public int getOpens() {
+    public String getOpens() {
         return opens;
     }
 
-    private void setOpens(int opens) {
+    private void setOpens(String opens) {
         this.opens = opens;
     }
 
@@ -56,11 +48,11 @@ public class RestaurantObject {
         this.email = email;
     }
     
-        public int getCloses() {
+    public String getCloses() {
         return closes;
     }
 
-    private void setCloses(int closes) {
+    private void setCloses(String closes) {
         this.closes = closes;
     }
     
