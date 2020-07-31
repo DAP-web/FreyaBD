@@ -32,7 +32,7 @@ public class MesasServlet extends HttpServlet {
                 //Pedir parametros y datos 
                 nTipo = request.getParameter("tipo");
                 nEstado = request.getParameter("estado");
-                strCantidad = request.getParameter("Cantidad");
+                strCantidad = request.getParameter("cantidad");
                 nCantidad = Integer.parseInt(strCantidad);
                 
                 //Crear el objeto logic para mandar parametros
@@ -41,7 +41,7 @@ public class MesasServlet extends HttpServlet {
                 
                 //GetSession
                 request.getSession().setAttribute("rows", rows);
-                response.sendRedirect("ClienteServlet?formid=3");
+                response.sendRedirect("MesasServlet?formid=6");
             break; 
             case "2":
                 System.out.println("Code for delete...");
@@ -56,7 +56,7 @@ public class MesasServlet extends HttpServlet {
                 
                 //
                 request.getSession().setAttribute("rows", rows);
-                response.sendRedirect("MesasServlet?formid=3");
+                response.sendRedirect("MesasServlet?formid=6");
                 
             break;
             case "3":
@@ -68,7 +68,7 @@ public class MesasServlet extends HttpServlet {
                 
                 // respuesta
                 request.getSession().setAttribute("mesasArray", mesasArray);
-                response.sendRedirect("MesasRstaurante.jsp");
+                response.sendRedirect("MesasCliente.jsp");
             break;
             //case 4 para update 1
             case "4":
@@ -97,7 +97,7 @@ public class MesasServlet extends HttpServlet {
                 rows = logic.updateMesas(nID, nTipo, nEstado, nCantidad);
                 
                 request.getSession().setAttribute("rows", rows);
-                response.sendRedirect("MesasServlet?formid=3");
+                response.sendRedirect("MesasServlet?formid=6");
                 break;
                //case 6 va a ser el mismo case 3 pero me va a redirigir hacia MesasCliente.jsp 
                 case "6":
@@ -109,7 +109,7 @@ public class MesasServlet extends HttpServlet {
                 
                 // respuesta
                 request.getSession().setAttribute("mesasArray", mesasarray);
-                response.sendRedirect("MesasRstaurante.jsp");
+                response.sendRedirect("MesasRestaurante.jsp");
                 default:
                 break;
                 

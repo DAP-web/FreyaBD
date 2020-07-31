@@ -26,7 +26,7 @@
     </head>
     <%
     MesaObjects mesaobjects = (MesaObjects) 
-            request.getSession().getAttribute("mesaobjects");
+            request.getSession().getAttribute("mesaObjects");
     %>
     <body bgcolor="#FFDAB9">
         <h1>Update Mesas</h1>

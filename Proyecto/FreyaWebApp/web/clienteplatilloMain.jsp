@@ -1,6 +1,6 @@
 <%-- 
-    Document   : clientemesaMain
-    Created on : Jul 30, 2020, 2:16:58 PM
+    Document   : clienteplatilloMain
+    Created on : Jul 31, 2020, 1:38:54 AM
     Author     : Diego Portillo
 --%>
 
@@ -28,10 +28,11 @@
         </style>
     </head>
     <body bgcolor="#FFDAB9">
-        <h1>Reservas</h1>
-        <h3>Cliente, mesa y hora de reserva</h3>
-        <p>Aquí irá una view que permita ver y modificar las reservas de las mesas 
-        que los clientes han hecho.</p>
+        <h1>Pedidos</h1>
+        <h3>Cliente, número de mesa y pedido</h3>
+        <p>Aquí irá una view que permita ver y modificar 
+            las ordenes que los clientes han hecho 
+            que los clientes han hecho.</p>
         <br><br>
         <a href="RestauranteServlet?formid=3" style="font-size: 1.25em">Volver</a>
     </body>
