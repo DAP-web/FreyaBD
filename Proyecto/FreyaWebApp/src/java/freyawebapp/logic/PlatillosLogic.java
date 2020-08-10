@@ -24,9 +24,8 @@ public class PlatillosLogic extends Logic{
         DatabaseX database = getDatabase();
         //ENVIAR CODIGO PARA INSERTAR SQL
         String sql = "INSERT INTO `freya1`.`platillos` "
-                + "(`idplatillos`, `nombrePlatillo`, `precio`, `detalle` "
-                + "VALUES (0, '"+pName+"', "+pPrice+", "
-                + "'"+pDescription+"');";
+                + "(`idplatillos`, `nombrePlatillo`, `precio`, `detalle`) "
+                + "VALUES (0, '"+pName+"', '"+pPrice+"', '"+pDescription+"');";
         //GET HOW MANY ROWS HAVE BEEN AFFECTED
         int rows = database.executeNonQueryRows(sql);
         return rows;
@@ -51,22 +50,21 @@ public class PlatillosLogic extends Logic{
             try{
                 int iId;
                 String strName;
-                int iPrice;
+                double dPrice;
                 String strDescription;
                 PlatilloObject temp;
                 
                 while(result.next()){
                     iId = result.getInt("idplatillos");
                     strName = result.getString("nombrePlatillo");
-                    iPrice = result.getInt("precio");
+                    dPrice = result.getDouble("precio");
                     strDescription = result.getString("detalle");
-                    temp = new PlatilloObject(iId, strName, iPrice, strDescription );
+                    temp = new PlatilloObject(iId, strName, dPrice, strDescription );
                     platilloArray.add(temp);
                 }
             } catch (SQLException ex){
-                //Logger.getLogger(TeacherLogic.class.getName()).log(Level.SEVERE, null, ex);
                 Logger.getLogger(PlatillosLogic.class.getName()).log(Level.SEVERE, null, ex);
-                //Logger.getLogger(ClientLogic.class.get).log(Level.SEVERE, null, ex);
+                
             }
         }
         return platilloArray;
@@ -84,15 +82,15 @@ public class PlatillosLogic extends Logic{
             try{
                 int iId;
                 String strName;
-                int iPrice;
+                double dPrice;
                 String strDescription;
                 
                 while(result.next()){
                     iId = result.getInt("idplatillos");
                     strName = result.getString("nombrePlatillo");
-                    iPrice = result.getInt("precio");
+                    dPrice = result.getDouble("precio");
                     strDescription = result.getString("detalle");
-                    temp = new PlatilloObject(iId, strName, iPrice, strDescription);
+                    temp = new PlatilloObject(iId, strName, dPrice, strDescription);
                     
                 }
             } catch (SQLException ex){
@@ -105,9 +103,9 @@ public class PlatillosLogic extends Logic{
     public int updateClient(int pId, String pName, String pPrice, 
             String pDescription){
         DatabaseX database = getDatabase();
-        String sql = "UPDATE `freya1`.`platillos` SET `nombrePlatillo` = '"+pName+"', "
-                + "`precio` = '"+pPrice+"', "
-                + "`detalle` = '"+pDescription+"', "
+        String sql = "UPDATE `freya1`.`platillos` "
+                + "SET `nombrePlatillo` = '"+pName+"', `precio` = '"+pPrice+"', "
+                + "`detalle` = '"+pDescription+"' "
                 + "WHERE (`idplatillos` = '"+pId+"');";
         int rows = database.executeNonQueryRows(sql);
         

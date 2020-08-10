@@ -57,8 +57,8 @@
                 %>
                 <tr>
                     <td><%= temp.getLocalizacion() %></td>
-                    <td><%= temp.getCodigoPostal() %></td>
-                    <td><%= temp.getNumeroTelefono() %></td>
+                    <td style="text-align: right"><%= temp.getCodigoPostal() %></td>
+                    <td style="text-align: right"><%= temp.getNumeroTelefono() %></td>
 
                 </tr>
                 <%

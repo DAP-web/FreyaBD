@@ -27,7 +27,7 @@ public class ClienteServlet extends HttpServlet {
         
         switch (strformid){
             case "1":
-                System.out.println("Code for insert new...");
+                System.out.println("Code for insert new Client...");
                 
                 //al inicio pedir los parametros o datos
                 strName = request.getParameter("name");
@@ -46,7 +46,7 @@ public class ClienteServlet extends HttpServlet {
                 response.sendRedirect("ClienteServlet?formid=3");
             break;
             case "2":
-                System.out.println("Code for delete...");
+                System.out.println("Code for delete Client...");
                 
                 //request parameters
                 strID = request.getParameter("id");
@@ -62,7 +62,7 @@ public class ClienteServlet extends HttpServlet {
                 
             break;
             case "3":
-                System.out.println("Code for select...");
+                System.out.println("Code for select all clients...");
                 
                 //logic
                 logic = new ClientLogic(strConnString);
@@ -73,7 +73,7 @@ public class ClienteServlet extends HttpServlet {
                 response.sendRedirect("clientMain.jsp");
             break;
             case "4":
-                System.out.println("Code for update 1...");
+                System.out.println("Code for update Client (1)...");
                 
                 strID = request.getParameter("id");
                 iID = Integer.parseInt(strID);
@@ -85,7 +85,7 @@ public class ClienteServlet extends HttpServlet {
                 response.sendRedirect("updateClient.jsp");
             break;
             case "5":
-                System.out.println("Code for update 2...");
+                System.out.println("Code for update Client (2)...");
                 
                 strID = request.getParameter("id");
                 iID = Integer.parseInt(strID);

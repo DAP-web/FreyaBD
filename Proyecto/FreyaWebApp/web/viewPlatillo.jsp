@@ -58,7 +58,7 @@
                 %>
                 <tr>
                     <td><%= temp.getName() %></td>
-                    <td><%= temp.getPrice() %></td>
+                    <td style="text-align:right">$<%= temp.getPrice() %></td>
                     <td><%= temp.getDescription() %></td>
 
                 </tr>

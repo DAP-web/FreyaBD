@@ -21,12 +21,13 @@ public class PlatilloServlet extends HttpServlet {
         String strformid = request.getParameter("formid");
         PlatillosLogic logic;
         int iID, iPrice, rows;
+        double dPrice;
         String strName, strDescription, strID, strPrice;
         request.getSession().setAttribute("rows", 0);
         
         switch (strformid){
             case "1":
-                System.out.println("Code for insert new...");
+                System.out.println("Code for insert new Platillo...");
                 
                 //al inicio pedir los parametros o datos
                 strName = request.getParameter("name");
@@ -43,7 +44,7 @@ public class PlatilloServlet extends HttpServlet {
                 response.sendRedirect("PlatilloServlet?formid=6");
             break;
             case "2":
-                System.out.println("Code for delete...");
+                System.out.println("Code for delete Platillo...");
                 
                 //request parameters
                 strID = request.getParameter("id");
@@ -59,7 +60,7 @@ public class PlatilloServlet extends HttpServlet {
                 
             break;
             case "3":
-                System.out.println("Code for select...");
+                System.out.println("Code for select all Platillos...");
                 
                 //logic
                 logic = new PlatillosLogic(strConnString);
@@ -86,7 +87,7 @@ public class PlatilloServlet extends HttpServlet {
                 
                 strID = request.getParameter("id");
                 iID = Integer.parseInt(strID);
-                strName = request.getParameter("name");
+                strName = request.getParameter("nombre");
                 strPrice = request.getParameter("price");
                 strDescription = request.getParameter("description");
                 

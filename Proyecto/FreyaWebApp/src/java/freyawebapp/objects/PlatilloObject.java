@@ -4,11 +4,11 @@ package freyawebapp.objects;
 public class PlatilloObject {
     private int id;
     private String name;
-    private int price;
+    private double price;
     private String description;
 
     
-    public PlatilloObject(int pId, String pName, int pPrice, String pDescription) {
+    public PlatilloObject(int pId, String pName, double pPrice, String pDescription) {
         setId(pId);
         setName(pName);
         setPrice(pPrice);
@@ -33,11 +33,11 @@ public class PlatilloObject {
     }
 
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    private void setPrice(int price) {
+    private void setPrice(double price) {
         this.price = price;
     }
 

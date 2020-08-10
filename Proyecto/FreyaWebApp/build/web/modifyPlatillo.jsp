@@ -60,7 +60,7 @@
                 %>
                 <tr>
                     <td><%= temp.getName() %></td>
-                    <td><%= temp.getPrice() %></td>
+                    <td style="text-align:right">$<%= temp.getPrice() %></td>
                     <td><%= temp.getDescription() %></td>
                     <td><a href="PlatilloServlet?formid=4&id=<%= temp.getId() %>">Update</a></td>
                     <td><a href="PlatilloServlet?formid=2&id=<%= temp.getId() %>">Delete</a></td>
