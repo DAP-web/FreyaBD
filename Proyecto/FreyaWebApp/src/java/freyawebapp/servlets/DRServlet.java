@@ -44,7 +44,7 @@ public class DRServlet extends HttpServlet {
                 
                 //PREGUNTAR ESTA ULTIMA PARTE DE GETSESSION
                 request.getSession().setAttribute("rows", rows);
-                response.sendRedirect("DRServlet?formid=3");
+                response.sendRedirect("DRServlet?formid=6");
             break;
             case "2":
                 System.out.println("Code for delete...");
@@ -59,7 +59,7 @@ public class DRServlet extends HttpServlet {
                 
                 //
                 request.getSession().setAttribute("rows", rows);
-                response.sendRedirect("DRServlet?formid=3");
+                response.sendRedirect("DRServlet?formid=6");
                 
             break;
             case "3":
@@ -99,7 +99,7 @@ public class DRServlet extends HttpServlet {
                 rows = logic.updateDR (iID, strLocalizacion, strCodigoPostal, strNumeroTelefono);
                 
                 request.getSession().setAttribute("rows", rows);
-                response.sendRedirect("DRServlet?formid=3");
+                response.sendRedirect("DRServlet?formid=6");
             break;
             case "6":
                 System.out.println("Code for select 2...");

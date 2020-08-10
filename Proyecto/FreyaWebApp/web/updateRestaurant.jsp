@@ -38,10 +38,10 @@
             <input type="text" id="name" name="name" value="<%= restaurantObject.getName() %>"/>
             <br><br>
             Hora de apertura:<br>
-            <input type="text" id="horaapertura" name="horaapertura" value="<%= restaurantObject.getOpens() %>"/>
+            <input type="time" id="horaapertura" name="horaapertura" value="<%= restaurantObject.getOpens() %>"/>
             <br><br>
             Hora de cierre:<br>
-            <input type="text" id="horacierre" name="horacierre" value="<%= restaurantObject.getCloses() %>"/>
+            <input type="time" id="horacierre" name="horacierre" value="<%= restaurantObject.getCloses() %>"/>
             <br><br>
             Email:<br>
             <input type="text" id="email" name="email" value="<%= restaurantObject.getEmail() %>"/>
