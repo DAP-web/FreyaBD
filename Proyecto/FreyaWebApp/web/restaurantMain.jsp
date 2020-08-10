@@ -74,8 +74,8 @@
                 %>
                 <tr>
                     <td><%= temp.getName() %></td>
-                    <td style="text-align: center"><%= temp.getOpens() %> a. m.</td>
-                    <td style="text-align: center"><%= temp.getCloses() %> p. m.</td>
+                    <td style="text-align: center"><%= temp.getOpens() %></td>
+                    <td style="text-align: center"><%= temp.getCloses() %></td>
                     <td><%= temp.getEmail() %></td>
                     <td><a href="RestauranteServlet?formid=4&id=<%= temp.getId() %>">Update</a></td>
                     <td><a href="RestauranteServlet?formid=2&id=<%= temp.getId() %>">Delete</a></td>

@@ -64,9 +64,7 @@ public class RestaurantLogic extends Logic{
                     restaurantArray.add(temp);
                 }
             } catch (SQLException ex){
-                //Logger.getLogger(TeacherLogic.class.getName()).log(Level.SEVERE, null, ex);
                 Logger.getLogger(RestaurantLogic.class.getName()).log(Level.SEVERE, null, ex);
-                //Logger.getLogger(ClientLogic.class.get).log(Level.SEVERE, null, ex);
             }
         }
         return restaurantArray;
@@ -107,11 +105,12 @@ public class RestaurantLogic extends Logic{
     public int updateRestaurant(int pId, String pName, String pOpens, 
             String pCloses, String pEmail){
         DatabaseX database = getDatabase();
-        String sql = "UPDATE `freya1`.`restaurante` SET `nombre` = '"+pName+"', "
+        String sql = "UPDATE `freya1`.`restaurante` "
+                + "SET `nombre` = '"+pName+"', "
                 + "`horaApertura` = '"+pOpens+"', "
-                + "`horaCierre` = '"+pCloses+"' "
-                + "`correoElectronico` = '"+pEmail+"', "               
-                + "WHERE (`idRestaurante` = "+pId+");";
+                + "`horaCierre` = '"+pCloses+"', "
+                + "`correoElectronico` = '"+pEmail+"' "
+                + "WHERE (`idRestaurante` = '"+pId+"');";
         int rows = database.executeNonQueryRows(sql);
         
         return rows;
