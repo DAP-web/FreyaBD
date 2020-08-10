@@ -62,6 +62,7 @@
                     <th>Opens at</th>
                     <th>Closes at</th>
                     <th>Email Address</th>
+                    <th colspan="2">Acciones</th>
                 </tr>
                 <%
                     Iterator<RestaurantObject> iteArray = null;
@@ -73,8 +74,8 @@
                 %>
                 <tr>
                     <td><%= temp.getName() %></td>
-                    <td><%= temp.getOpens() %></td>
-                    <td><%= temp.getCloses() %></td>
+                    <td style="text-align: center"><%= temp.getOpens() %> a. m.</td>
+                    <td style="text-align: center"><%= temp.getCloses() %> p. m.</td>
                     <td><%= temp.getEmail() %></td>
                     <td><a href="RestauranteServlet?formid=4&id=<%= temp.getId() %>">Update</a></td>
                     <td><a href="RestauranteServlet?formid=2&id=<%= temp.getId() %>">Delete</a></td>

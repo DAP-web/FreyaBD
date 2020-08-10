@@ -42,6 +42,7 @@
     %>    
             <table style="width:45%" border="1">
                <tr>
+                   <th>Número de mesa</th>
                    <th>Tipo </th>
                     <th>Estado</th>
                     <th>Cantidad</th>
@@ -57,9 +58,10 @@
                  
                 %>
                 <tr> 
+                    <td style="text-align:center"><%= temp.getId() %></td>
                     <td><%= temp.getTipo()   %></td>
                     <td><%= temp.getEstado()  %></td>
-                    <td><%= temp.getCantidad()  %></td>
+                    <td style="text-align:center"><%= temp.getCantidad()  %></td>
                 </tr>
                 <%
                         }

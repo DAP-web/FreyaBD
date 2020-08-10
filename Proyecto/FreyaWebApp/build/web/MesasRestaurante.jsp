@@ -47,9 +47,11 @@
         %>
             <table style="width:40%" border="1">
                 <tr>
+                    <th style="text-align: center">Número de mesa</th>
                     <th>Tipo</th>
                     <th>Estado</th>
                     <th>Cantidad</th>
+                    <th colspan="2">Acciones</th>
                 </tr>
                 <%
                     Iterator<MesaObjects> iteArray = null;
@@ -60,9 +62,10 @@
                             temp = iteArray.next();
                 %>
                 <tr>
+                    <td style="text-align: center"><%= temp.getId() %></td>
                     <td><%= temp.getEstado() %></td>
                     <td><%= temp.getTipo() %></td>
-                    <td><%= temp.getCantidad() %></td>
+                    <td style="text-align: center"><%= temp.getCantidad() %></td>
                     <td><a href="MesasServlet?formid=4&id=<%= temp.getId() %>">Update</a></td>
                     <td><a href="MesasServlet?formid=2&id=<%= temp.getId() %>">Delete</a></td>
                 </tr>
