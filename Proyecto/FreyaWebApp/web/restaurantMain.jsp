@@ -41,7 +41,7 @@
         <br><br>
         <a href="PlatilloServlet?formid=6" style="font-size: 1.5em">Modificar Platillos</a>
         <br><br>
-        <a href="clientemesaMain.jsp" style="font-size: 1.5em">Ver reservas</a>
+        <a href="ReservaServlet?formid=3" style="font-size: 1.5em">Ver reservas</a>
         <br><br>
         <a href="clienteplatilloMain.jsp" style="font-size: 1.5em">Ver pedidos</a>
         <br><br>
@@ -86,6 +86,6 @@
                 %>
             </table>
             <br><Br>
-            <a href="index.html" style="font-size: 1.25em">Volver al inicio</a>
+            <a href="index_admin.html" style="font-size: 1.25em">Volver al inicio</a>
     </body>
 </html>
