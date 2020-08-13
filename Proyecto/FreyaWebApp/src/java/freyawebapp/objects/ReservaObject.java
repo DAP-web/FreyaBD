@@ -1,12 +1,12 @@
 package freyawebapp.objects;
 
-public class ClienteMesaObject {
-    private int id;
+public class ReservaObject {
+    private int idreserva;
     private int idCliente;
     private int idMesa;
     private String horaReserva;
 
-    public ClienteMesaObject(int pId, int pIdCliente, int pIdMesa, String pHoraReserva) {
+    public ReservaObject (int pId, int pIdCliente, int pIdMesa, String pHoraReserva) {
         setId(pId);
         setIdCliente(pIdCliente);
         setIdMesa(pIdMesa);
@@ -14,11 +14,11 @@ public class ClienteMesaObject {
     }
 
     public int getId() {
-        return id;
+        return idreserva;
     }
 
     private void setId(int id) {
-        this.id = id;
+        this.idreserva = id;
     }
 
     public int getIdCliente() {

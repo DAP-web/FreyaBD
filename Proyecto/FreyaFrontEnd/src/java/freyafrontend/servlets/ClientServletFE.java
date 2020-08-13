@@ -1,35 +1,21 @@
-package freyawebapp.servlets;
 
-import freyawebapp.logic.ClienteMesaLogic;
+package freyafrontend.servlets;
+
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "ClienteMesaServlet", urlPatterns = {"/ClienteMesaServlet"})
-public class ClienteMesaServlet extends HttpServlet {
 
+@WebServlet(name = "ClientServletFE", urlPatterns = {"/ClientServletFE"})
+public class ClientServletFE extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String strConnString = "jdbc:mysql://localhost/freya1?"
-                + "user=root&password=12345&"
-                + "autoReconnect=true&useSSL=false";
-        String strformid = request.getParameter("formid");
-        ClienteMesaLogic logic;
         
-        request.getSession().setAttribute("rows", 0);
-        String strLastName, strName, strPhoneNumber, strTableID, strHoraReserva;
-        int iIDcliente, iIDmesa, iPhoneNumber, rows;
-        
-        switch (strformid) {
-            case "1":
-                System.out.println("Code for insert new reservation");
-                
-                
-        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
