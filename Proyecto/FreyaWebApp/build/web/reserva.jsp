@@ -42,7 +42,7 @@
         <p>Aquí irá una view que permita ver y modificar las reservas de las mesas 
         que los clientes han hecho.</p>
         <br><br>
-        <a href="ReservaServlet?formid=6">Nueva Reserva</a>
+        <a href="ReservaServlet?formid=6" style="font-size: 1.25em">Nueva Reserva</a>
         <br><br>
         <%
         if(rows>0)
@@ -60,7 +60,7 @@
             <th>Client Phone Number</th>
             <th>Table ID</th>
             <th>Hora Reserva</th>
-            <th colspan="2">Acciones</th>
+            <th <!--colspan="2"-->Acciones</th>
           </tr>
           <%
               Iterator<ReservaViewObject> iteArray= null;
@@ -77,9 +77,9 @@
                       <td><%= temp.getName() %></td>
                       <td style="text-align:right"><%= temp.getPhoneNumber() %></td>
                       <td style="text-align:center"><%= temp.getTableID() %></td>
-                      <td style="text-align:center"><%= temp.getHoraReserva() %></td>
-                      <td><a href="SectionServlet?formid=4&id=<%= temp.getReservaID() %>">Update</a></td>
-                      <td><a href="SectionServlet?formid=2&id=<%= temp.getReservaID()%>">Delete</a></td>
+                      <td style="text-align:center"><%= temp.getHoraReserva() %></td><!--
+                      <td><a href="SectionServlet?formid=4&id=<%= temp.getReservaID() %>">Update</a></td>-->
+                      <td><a href="ReservaServlet?formid=2&id=<%= temp.getReservaID()%>">Delete</a></td>
                     </tr>
           <%
                    }

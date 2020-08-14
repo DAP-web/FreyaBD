@@ -23,7 +23,6 @@ public class ClienteServlet extends HttpServlet {
         ClientLogic logic;
         int iID, iNumeroTelefono, rows;
         String strName, strLastName, strEmail, strPassword, strID, strNumeroTelefono;
-        request.getSession().setAttribute("rows", 0);
         
         switch (strformid){
             case "1":
@@ -65,6 +64,7 @@ public class ClienteServlet extends HttpServlet {
                 System.out.println("Code for select all clients...");
                 
                 //logic
+                
                 logic = new ClientLogic(strConnString);
                 ArrayList<ClientObject> clientArray = logic.getAllClients();
                 

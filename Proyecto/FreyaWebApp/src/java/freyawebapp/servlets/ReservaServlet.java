@@ -5,6 +5,7 @@ import freyawebapp.logic.MesasLogic;
 import freyawebapp.logic.ReservaLogic;
 import freyawebapp.objects.ClientObject;
 import freyawebapp.objects.MesaObjects;
+import freyawebapp.objects.ReservaObject;
 import freyawebapp.objects.ReservaViewObject;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -29,6 +30,12 @@ public class ReservaServlet extends HttpServlet {
         String strIdreserva, strIdcliente, strIdmesa, strHoraReserva;
         int iIdreserva, iIdcliente, iIdmesa, rows;
         
+        ClientLogic clientLogic;
+        MesasLogic mesasLogic;
+                
+        ArrayList<ClientObject> clientArray;
+        ArrayList<MesaObjects> mesasArray;
+        
         switch(strformid){
             case "1":
                 System.out.println("Código para ingresar una reserva nueva...");
@@ -49,6 +56,19 @@ public class ReservaServlet extends HttpServlet {
                 response.sendRedirect("ReservaServlet?formid=3");
                 break;
             case "2":
+                System.out.println("Código para eliminar una reserva...");
+                
+                //al inicio
+                strIdreserva = request.getParameter("id");
+                iIdreserva = Integer.parseInt(strIdreserva);
+                
+                //enmedio
+                logic = new ReservaLogic(strConnString);
+                rows = logic.deleteReserva(iIdreserva);
+                
+                //al final
+                request.getSession().setAttribute("rows", rows);
+                response.sendRedirect("ReservaServlet?formid=3");
                 break;
             case "3":
                 System.out.println("Traer todas las reservas...");
@@ -60,14 +80,30 @@ public class ReservaServlet extends HttpServlet {
                 request.getSession().setAttribute("reservaArray", reservaArray);
                 response.sendRedirect("reserva.jsp");
                 break;
+            case "4":
+                /*
+                System.out.println("Get parts for update 1...");
+                
+                strIdreserva = request.getParameter("id");
+                iIdreserva = Integer.parseInt(strIdreserva);
+                
+                logic = new ReservaLogic(strConnString);
+                ReservaObject reservaobj = logic.getReservaByID(iIdreserva);
+                
+                request.getSession().setAttribute("reservaobj", reservaobj);
+                response.sendRedirect("newReserva.jsp");
+                */
+                break;
+            case "5":
+                break;
             case "6":
                 System.out.println("Get all parts for new reservation");
                 
-                ClientLogic clientLogic = new ClientLogic (strConnString);
-                MesasLogic mesasLogic = new MesasLogic (strConnString);
+                clientLogic = new ClientLogic (strConnString);
+                mesasLogic = new MesasLogic (strConnString);
                 
-                ArrayList<ClientObject> clientArray = clientLogic.getAllClients();
-                ArrayList<MesaObjects> mesasArray = mesasLogic.getAllMesas();
+                clientArray = clientLogic.getAllClients();
+                mesasArray = mesasLogic.getAllMesas();
                 
                 request.getSession().setAttribute("clientArray", clientArray);
                 request.getSession().setAttribute("mesasArray", mesasArray);

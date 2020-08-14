@@ -8,6 +8,9 @@ public class ReservaViewObject {
     private int tableID;
     private String horaReserva;
 
+    public ReservaViewObject() {
+    }
+    
     public ReservaViewObject(int pReservaID, String pLastName, String pName, int pPhoneNumber, int pTableID, String pHoraReserva) {
         setReservaID(pReservaID);
         setLastName(pLastName);

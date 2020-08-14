@@ -1,6 +1,6 @@
 <%-- 
-    Document   : index
-    Created on : Aug 12, 2020, 6:56:04 PM
+    Document   : adminlogin
+    Created on : Aug 13, 2020, 10:38:11 PM
     Author     : Diego Portillo
 --%>
 
@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Login Clients</title>
+        <title>Administrators Login</title>
         <style>
             h1{
                 color: #000000;
@@ -28,11 +28,11 @@
         </style>
     </head>
     <body bgcolor="#FFDAB9">
-        <h1>Login for Clients</h1>
+        <h1>Login for Administrators</h1>
         <br>
         <%
             
-        String message = (String)request.getSession().getAttribute("message");
+        String message = (String)request.getSession().getAttribute("message1");
         
         if(message != null){
         
@@ -50,13 +50,10 @@
             <input type="password" id="password" name="password" required/>
             <br><br>
             <input type="submit" value="Send" />
-            <input type="hidden" name="formid" value="1" />
+            <input type="hidden" name="formid" value="2" />
         </form>
         <br>
-        Don't have an account yet? <a href="newClient.html">Sign up here</a>
-        <br>
-        Are you an administrator? <a href="adminlogin.jsp">Log in here</a>
+        Are you a new administrator? <a href="adminverify.jsp">Sign up here</a>
         <br><br>
-        <a href="index_admin.html">Go to admin</a>
     </body>
 </html>
