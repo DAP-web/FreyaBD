@@ -1,34 +1,22 @@
 package freyawebapp.objects;
 
-public class ClientObject {
+public class AdminObject {
     private int id;
     private String name;
     private String lastname;
-    private int numeroTelefono;
     private String email;
     private String password;
 
-    public ClientObject() {
-    } 
-    
-    public ClientObject(int pId, String pName, String pLastname, 
-            int pNumeroTelefono, String pEmail, String pPassword) {
+    public AdminObject() {
+    }
+
+    public AdminObject(int pId, String pName, String pLastname, String pEmail, String pPassword) {
         setId(pId);
         setName(pName);
         setLastname(pLastname);
-        setNumeroTelefono(pNumeroTelefono);
         setEmail(pEmail);
         setPassword(pPassword);
     }
-    
-    public ClientObject(int pId, String pName, String pLastname, 
-            int pNumeroTelefono, String pEmail) {
-        setId(pId);
-        setName(pName);
-        setLastname(pLastname);
-        setNumeroTelefono(pNumeroTelefono);
-        setEmail(pEmail);
-    }  
 
     public int getId() {
         return id;
@@ -52,14 +40,6 @@ public class ClientObject {
 
     private void setLastname(String lastname) {
         this.lastname = lastname;
-    }
-
-    public int getNumeroTelefono() {
-        return numeroTelefono;
-    }
-
-    private void setNumeroTelefono(int numeroTelefono) {
-        this.numeroTelefono = numeroTelefono;
     }
 
     public String getEmail() {

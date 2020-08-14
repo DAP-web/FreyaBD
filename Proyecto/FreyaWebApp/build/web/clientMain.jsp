@@ -20,14 +20,16 @@
                 font-size: 40px;
             }
             p{
-                color: #000000;
+                color: #8B0000;
             }
         </style>
     </head>
     <%
-        int rows = (int)request.getSession().getAttribute("rows");
+        int rows = 0;
+        //rows = (int)request.getSession().getAttribute("rows");
         ArrayList<ClientObject> array = (ArrayList<ClientObject>)
                 request.getSession().getAttribute("clientArray");
+            
     %>
     <body bgcolor="#FFDAB9">
         <h1>Client Main</h1>

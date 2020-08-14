@@ -1,5 +1,8 @@
 package freyawebapp.servlets;
 
+import freyawebapp.logic.UsersLogic;
+import freyawebapp.objects.AdminObject;
+import freyawebapp.objects.ClientObject;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +15,78 @@ public class UsernameServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String strConnString = "jdbc:mysql://localhost/freya1?"
+                + "user=root&password=12345&"
+                + "autoReconnect=true&useSSL=false";
+        String strformid = request.getParameter("formid");
+        String strEmail, strPassword, message;
+        int rows, identifier;
+        
+        UsersLogic logic;
+        
+        switch(strformid){
+            case"1":
+                System.out.println("Se verificará la identidad del usuario. Login Cliente");
+                
+                strEmail = request.getParameter("email");
+                strPassword = request.getParameter("password");
+                
+                logic = new UsersLogic(strConnString);
+                ClientObject clientobject = logic.getClientByEmail(strEmail);
+                boolean bValidUser = false;
+                
+                request.getSession().setAttribute("clientobject", clientobject);
+                
+                if (clientobject!=null){
+                    if(clientobject.getPassword().equals(strPassword)) {
+                        System.out.println("Es un cliente.");
+                        response.sendRedirect("ClienteServlet?formid=3");
+                    } else {
+                        System.out.println("Algo salió mal.");
+                        message = "Algo salió mal. Verifica los campos y vuelve a probar.";
+                        request.getSession().setAttribute("message", message);
+                        response.sendRedirect("index.jsp");
+                    }
+                } else {
+                    System.out.println("Algo salió mal.");
+                        message = "Algo salió mal. Verifica los campos y vuelve a probar.";
+                        request.getSession().setAttribute("message", message);
+                        response.sendRedirect("index.jsp");
+                }
+                break;
+            case"2":
+                System.out.println("Se verificará la identidad del usuario. Login Admin");
+                strEmail = request.getParameter("email");
+                strPassword = request.getParameter("password");
+                
+                logic = new UsersLogic(strConnString);
+                AdminObject adminobject = logic.getAdminByEmail(strEmail);
+                
+                request.getSession().setAttribute("adminobject", adminobject);
+                
+                if (adminobject!=null){
+                    if(adminobject.getPassword().equals(strPassword)) {
+                        System.out.println("Es un cliente.");
+                        response.sendRedirect("index_admin.html");
+                    } else {
+                        System.out.println("Algo salió mal.");
+                        message = "Algo salió mal. Verifica los campos y vuelve a probar.";
+                        request.getSession().setAttribute("message1", message);
+                        response.sendRedirect("adminlogin.jsp");
+                    }
+                } else {
+                    System.out.println("Algo salió mal.");
+                        message = "Algo salió mal. Verifica los campos y vuelve a probar.";
+                        request.getSession().setAttribute("message1", message);
+                        response.sendRedirect("adminlogin.jsp");
+                }
+                break;
+            case "3":
+                break;
+            default:
+                break;
+        }
+        
         
     }
 
