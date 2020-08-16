@@ -54,6 +54,8 @@
         </form>
         <br>
         Are you a new administrator? <a href="UsernameServlet?formid=3">Sign up here</a>
-        <br><br>
+        <br>
+        <a href="index.jsp" style="color: darkred">Cancel</a>
+        <br>
     </body>
 </html>
