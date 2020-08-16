@@ -82,6 +82,14 @@ public class UsernameServlet extends HttpServlet {
                 }
                 break;
             case "3":
+                System.out.println("Se está intentando crear un nuevo usuario administrador");
+                
+                message = "Por favor ingrese a su cuenta de Administrador "
+                        + "para poder agregar nuevos administradores";
+                
+                request.getSession().setAttribute("message1", message);
+                response.sendRedirect("adminlogin.jsp");
+                
                 break;
             default:
                 break;
