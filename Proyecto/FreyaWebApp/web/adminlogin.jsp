@@ -53,7 +53,7 @@
             <input type="hidden" name="formid" value="2" />
         </form>
         <br>
-        Are you a new administrator? <a href="adminverify.jsp">Sign up here</a>
+        Are you a new administrator? <a href="UsernameServlet?formid=3">Sign up here</a>
         <br><br>
     </body>
 </html>
