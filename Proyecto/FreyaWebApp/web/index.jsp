@@ -53,7 +53,7 @@
             <input type="hidden" name="formid" value="1" />
         </form>
         <br>
-        Don't have an account yet? <a href="newClient.html">Sign up here</a>
+        Don't have an account yet? <a href="newClient1.html">Sign up here</a>
         <br>
         Are you an administrator? <a href="adminlogin.jsp">Log in here</a>
         <br><br>

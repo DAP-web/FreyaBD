@@ -19,7 +19,7 @@ public class UsernameServlet extends HttpServlet {
                 + "user=root&password=12345&"
                 + "autoReconnect=true&useSSL=false";
         String strformid = request.getParameter("formid");
-        String strEmail, strPassword, message;
+        String strEmail, strPassword, message, strName, strLastName, strLoginName;
         int rows, identifier;
         
         UsersLogic logic;
@@ -33,14 +33,14 @@ public class UsernameServlet extends HttpServlet {
                 
                 logic = new UsersLogic(strConnString);
                 ClientObject clientobject = logic.getClientByEmail(strEmail);
-                boolean bValidUser = false;
                 
                 request.getSession().setAttribute("clientobject", clientobject);
                 
                 if (clientobject!=null){
                     if(clientobject.getPassword().equals(strPassword)) {
                         System.out.println("Es un cliente.");
-                        response.sendRedirect("ClienteServlet?formid=3");
+                        request.getSession().setAttribute("strEmail", strEmail);
+                        response.sendRedirect("ClienteServlet?formid=10");
                     } else {
                         System.out.println("Algo salió mal.");
                         message = "Algo salió mal. Verifica los campos y vuelve a probar.";
@@ -67,7 +67,13 @@ public class UsernameServlet extends HttpServlet {
                 if (adminobject!=null){
                     if(adminobject.getPassword().equals(strPassword)) {
                         System.out.println("Es un cliente.");
-                        response.sendRedirect("index_admin.html");
+                        strName = adminobject.getName();
+                        strLastName = adminobject.getLastname();
+                        strLoginName = strName+" "+strLastName;
+                        
+                        request.getSession().setAttribute("LoginName", strLoginName);
+                        response.sendRedirect("index_admin.jsp");
+                        
                     } else {
                         System.out.println("Algo salió mal.");
                         message = "Algo salió mal. Verifica los campos y vuelve a probar.";

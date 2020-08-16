@@ -1,6 +1,7 @@
 package freyawebapp.servlets;
 
 import freyawebapp.logic.ClientLogic;
+import freyawebapp.logic.UsersLogic;
 import freyawebapp.objects.ClientObject;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -21,8 +22,9 @@ public class ClienteServlet extends HttpServlet {
                 + "autoReconnect=true&useSSL=false";
         String strformid = request.getParameter("formid");
         ClientLogic logic;
+        UsersLogic logix;
         int iID, iNumeroTelefono, rows;
-        String strName, strLastName, strEmail, strPassword, strID, strNumeroTelefono;
+        String strName, strLastName, strEmail, strPassword, strID, strNumeroTelefono, strLoginName, message;
         
         switch (strformid){
             case "1":
@@ -102,6 +104,90 @@ public class ClienteServlet extends HttpServlet {
                 request.getSession().setAttribute("rows", rows);
                 response.sendRedirect("ClienteServlet?formid=3");
             break;
+            case "6":
+                System.out.println("Código para registrar nuevo cliente desde el index.");
+                
+                //al inicio pedir los parametros o datos
+                strName = request.getParameter("name");
+                strLastName = request.getParameter("lastname");
+                strNumeroTelefono = request.getParameter("numeroTelefono");
+                //nNumeroTelefono = request.getParameter(nName)
+                strEmail = request.getParameter("email");
+                strPassword = request.getParameter("password");
+                strLoginName = strName+" "+strLastName;
+                
+                //Crear un objeto Logic para mandar parametros
+                logic = new ClientLogic(strConnString);
+                rows = logic.insertNewClient(strName, strLastName, strNumeroTelefono, strEmail, strPassword);
+                
+                //PREGUNTAR ESTA ULTIMA PARTE DE GETSESSION
+                request.getSession().setAttribute("LoginName", strLoginName);
+                request.getSession().setAttribute("rows", rows);
+                
+                //Mandar a traer informacion para el usuario
+                
+                response.sendRedirect("index_cliente.jsp");
+                break;
+            case "7":
+                System.out.println("Code for delete Client...");
+                
+                //request parameters
+                strID = request.getParameter("id");
+                iID = Integer.parseInt(strID);
+                
+                //LOGIC
+                logic = new ClientLogic(strConnString);
+                rows = logic.deleteCliente(iID);
+                message = "Se ha removido el cliente con éxito. Esperamos volverte a ver.";
+                
+                request.getSession().setAttribute("message", message);
+                request.getSession().setAttribute("rows", rows);
+                response.sendRedirect("index.jsp");
+                break;
+            case "8":
+                System.out.println("Code for update Client (1)...");
+                
+                strID = request.getParameter("id");
+                iID = Integer.parseInt(strID);
+                
+                logic = new ClientLogic(strConnString);
+                ClientObject clientobject = logic.getClientByID(iID);
+                
+                request.getSession().setAttribute("clientobject", clientobject);
+                response.sendRedirect("updateClient1.jsp");
+                break;
+            case "9":
+                System.out.println("Code for update Client (2)...");
+                
+                strID = request.getParameter("id");
+                iID = Integer.parseInt(strID);
+                strName = request.getParameter("name");
+                strLastName = request.getParameter("lastname");
+                strNumeroTelefono = request.getParameter("numeroTelefono");
+                //nNumeroTelefono = request.getParameter(nName)
+                strEmail = request.getParameter("email");
+                strPassword = request.getParameter("password");
+                
+                logic = new ClientLogic(strConnString);
+                rows = logic.updateClient(iID, strName, strLastName, strNumeroTelefono, strEmail, strPassword);
+                
+                request.getSession().setAttribute("rows", rows);
+                response.sendRedirect("ClienteServlet?formid=10");
+            break;
+            case "10":
+                strEmail = (String)request.getSession().getAttribute("strEmail");
+                
+                logix = new UsersLogic(strConnString);
+                ClientObject clientobj = logix.getClientByEmail(strEmail);
+                strName = clientobj.getName();
+                strLastName = clientobj.getLastname();
+                
+                strLoginName = strName+" "+strLastName;
+                
+                request.getSession().setAttribute("LoginName", strLoginName);
+                request.getSession().setAttribute("clientobj", clientobj);
+                response.sendRedirect("index_cliente.jsp");
+                break;
             default:
             break;
         }
