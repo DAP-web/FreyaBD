@@ -82,7 +82,7 @@
                 %>
             </table>
             <br><br>
-            <a href="index_admin.html"style="font-size: 1.25em">Volver al inicio</a>
+            <a href="index_admin.jsp"style="font-size: 1.25em">Volver al inicio</a>
             
     </body>
 </html>

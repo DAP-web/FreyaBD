@@ -55,7 +55,7 @@
         <br>
         Are you a new administrator? <a href="UsernameServlet?formid=3">Sign up here</a>
         <br>
-        <a href="index.jsp" style="color: darkred">Cancel</a>
+        Not an administrator? <a href="index.jsp">Go back to client</a>
         <br>
     </body>
 </html>
