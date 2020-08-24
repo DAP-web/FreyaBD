@@ -75,7 +75,7 @@
                     <tr>
                       <td><%= temp.getLastName() %></td>
                       <td><%= temp.getName() %></td>
-                      <td style="text-align:right"><%= temp.getPhoneNumber() %></td>
+                      <td style="text-align:center"><%= temp.getPhoneNumber() %></td>
                       <td style="text-align:center"><%= temp.getTableID() %></td>
                       <td style="text-align:center"><%= temp.getHoraReserva() %></td><!--
                       <td><a href="SectionServlet?formid=4&id=<%= temp.getReservaID() %>">Update</a></td>-->

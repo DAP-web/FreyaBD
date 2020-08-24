@@ -71,6 +71,6 @@
         %>
         <br>
         <a href="ClienteServlet?formid=7&id=<%= temp.getId() %>">Eliminar perfil</a>
-        
+
     </body>
 </html>
