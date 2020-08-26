@@ -71,6 +71,8 @@
         %>
         <br>
         <a href="ClienteServlet?formid=7&id=<%= temp.getId() %>">Eliminar perfil</a>
+        <br>
+        <a href="ReservaServlet?formid=7&id=<%= temp.getId() %>">Hacer Reserva</a>
 
     </body>
 </html>
