@@ -111,6 +111,37 @@ public class ReservaServlet extends HttpServlet {
                 break;
             default:
                 break;
+                case "7":
+                System.out.println("Get all parts for new reservation #cliente#");
+                
+                clientLogic = new ClientLogic (strConnString);
+                mesasLogic = new MesasLogic (strConnString);
+                
+                clientArray = clientLogic.getAllClients();
+                mesasArray = mesasLogic.getAllMesas();
+                
+                request.getSession().setAttribute("clientArray", clientArray);
+                request.getSession().setAttribute("mesasArray", mesasArray);
+                response.sendRedirect("newReservaC.jsp");
+                break;
+                case "8":
+                System.out.println("Código para ingresar una reserva nueva... #cliente#");
+                
+                //al inicio
+                strIdcliente = request.getParameter("lastname");
+                iIdcliente = Integer.parseInt(strIdcliente);
+                strIdmesa = request.getParameter("numeroMesa");
+                iIdmesa = Integer.parseInt(strIdmesa);
+                strHoraReserva = request.getParameter("horaReserva");
+                
+                //enmedio
+                logic = new ReservaLogic(strConnString);
+                rows = logic.insertNewReserva(iIdcliente, iIdmesa, strHoraReserva);
+                
+                //al final
+                request.getSession().setAttribute("rows", rows);
+                response.sendRedirect("index_cliente.jsp");
+                break;
         }
     }
 
