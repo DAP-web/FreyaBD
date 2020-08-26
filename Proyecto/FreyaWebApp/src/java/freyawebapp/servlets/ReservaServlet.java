@@ -107,7 +107,7 @@ public class ReservaServlet extends HttpServlet {
                 
                 request.getSession().setAttribute("clientArray", clientArray);
                 request.getSession().setAttribute("mesasArray", mesasArray);
-                response.sendRedirect("newReservaC.jsp");
+                response.sendRedirect("newReserva.jsp");
                 break;
             case "7":
             System.out.println("Get all parts for new reservation #cliente#");
