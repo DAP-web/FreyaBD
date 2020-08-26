@@ -24,8 +24,9 @@ public class AdminServlet extends HttpServlet {
                 + "autoReconnect=true&useSSL=false";
         String strformid = request.getParameter("formid");
         AdminLogic logic;
-        int iID, rows;
-        String strName, strLastName, strID, strEmail, strPassword;
+        AdminObject adminobject;
+        int iID, rows, id;
+        String strName, strLastName, strID, strEmail, strPassword, message;
         request.getSession().setAttribute("rows", 0);
         
         switch (strformid){
@@ -35,7 +36,7 @@ public class AdminServlet extends HttpServlet {
                 //al inicio pedir los parametros o datos
                 
                 strName = request.getParameter("name");
-                strLastName = request.getParameter("lastName");
+                strLastName = request.getParameter("lastname");
                 strEmail = request.getParameter("email");
                 strPassword = request.getParameter("password");
                 
@@ -46,8 +47,9 @@ public class AdminServlet extends HttpServlet {
                 rows = logic.insertNewAdmin (strName, strLastName, strEmail, strPassword);
                 
                 //PREGUNTAR ESTA ULTIMA PARTE DE GETSESSION
+                request.getSession().setAttribute("LoginName", strLastName);
                 request.getSession().setAttribute("rows", rows);
-                response.sendRedirect("AdminServlet?formid=6");
+                response.sendRedirect("index_admin.jsp");
             break;
             case "2":
                 System.out.println("Code for delete...");
@@ -79,13 +81,13 @@ public class AdminServlet extends HttpServlet {
             case "4":
                 System.out.println("Code for update 1...");
                 
-                strID = request.getParameter("id");
-                iID = Integer.parseInt(strID);
+                
+                iID = (int)request.getSession().getAttribute("id");
                 
                 logic = new AdminLogic(strConnString);
-                AdminObject adminObject = logic.getAdminByID(iID);
+                adminobject = logic.getAdminByID(iID);
                 
-                request.getSession().setAttribute("adminobject", adminObject);
+                request.getSession().setAttribute("adminobject", adminobject);
                 response.sendRedirect("updateAdmin.jsp");
             break;
             case "5":
@@ -104,7 +106,7 @@ public class AdminServlet extends HttpServlet {
                 rows = logic.updateAdmin (iID, strName, strLastName, strEmail, strPassword);
                 
                 request.getSession().setAttribute("rows", rows);
-                response.sendRedirect("AdminServlet?formid=6");
+                response.sendRedirect("index_admin.jsp");
             break;
             case "6":
                 System.out.println("Code for select 2...");
@@ -117,6 +119,33 @@ public class AdminServlet extends HttpServlet {
                 request.getSession().setAttribute("adminArray", admiNArray);
                 response.sendRedirect("modifyAdmin.jsp");
             break;
+            case"7":
+                strName = request.getParameter("name");
+                strPassword = request.getParameter("password");
+                
+                if(strPassword.equals("abcde")){
+                    response.sendRedirect("newAdmin.html");
+                } else {
+                    message = "No tiene permisos para agregar nuevos administradores";
+                    request.getSession().setAttribute("mensaje2", message);
+                    response.sendRedirect("verify.jsp");
+                }
+                
+                break;
+            case "8":
+                strName = request.getParameter("name");
+                strPassword = request.getParameter("password");
+                
+                if(strPassword.equals("abcde")){
+                    
+                    response.sendRedirect("AdminServlet?formid=4");
+                } else {
+                    message = "No tiene permisos para agregar nuevos administradores";
+                    request.getSession().setAttribute("mensaje2", message);
+                    response.sendRedirect("AdminServlet?formid=8");
+                }
+                
+                break;
             default:
             break;
         }

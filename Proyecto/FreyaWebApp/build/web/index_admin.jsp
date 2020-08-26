@@ -44,12 +44,13 @@
         <%
         }
         %>
-        
-        <br>
+        <a href="verify1.jsp">Actualizar administrador</a>
+        <br><br>
         <a href="ClienteServlet?formid=3">Go to client</a>
         <br><br>
         <a href="RestauranteServlet?formid=3">Go to restaurant</a>
         <br><br><br>
+        <a href="verify.jsp">Agregar nuevo administrador</a>
 
         
     </body>

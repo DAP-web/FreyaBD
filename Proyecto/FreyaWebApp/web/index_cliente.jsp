@@ -29,11 +29,15 @@
             }
         </style>
     </head>
+    <%
+    
+    %>
     <body bgcolor="#FFDAB9">
         
         <h1>Freya BD website for Clients</h1>
         <br><br>
         <%
+        String message = (String)request.getSession().getAttribute("message1");
         ClientObject temp = (ClientObject)request.getSession().getAttribute("clientobj");
         String login = (String)request.getSession().getAttribute("LoginName");
         if (!(login.equals(null))) {
@@ -46,6 +50,12 @@
         
         <%
         }
+                
+        //if(!(message.equals(null))){
+        %>
+        <p><%= message %><br>
+        <%
+        //}
         %>
         
         <table style="width:45%" border="1">
@@ -71,7 +81,7 @@
         %>
         <br>
         <a href="ClienteServlet?formid=7&id=<%= temp.getId() %>">Eliminar perfil</a>
-        <br>
+        <br><br>
         <a href="ReservaServlet?formid=7&id=<%= temp.getId() %>">Hacer Reserva</a>
 
     </body>

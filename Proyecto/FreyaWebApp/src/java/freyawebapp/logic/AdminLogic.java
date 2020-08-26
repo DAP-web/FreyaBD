@@ -73,7 +73,7 @@ public class AdminLogic  extends Logic{
     public AdminObject getAdminByID (int pID){
         DatabaseX database = getDatabase();
         ArrayList<AdminObject> adminArray = new ArrayList<>();
-        String sql = "select * from freya1.administrators where idadmin="+pID+";";
+        String sql = "select * from freya1.administrators where idadmin='"+pID+"';";
         ResultSet result = database.executeQuery(sql);
         
         AdminObject temp = null;

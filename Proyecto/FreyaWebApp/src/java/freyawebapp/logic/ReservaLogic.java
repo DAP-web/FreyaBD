@@ -79,7 +79,7 @@ public class ReservaLogic extends Logic{
     
     public ReservaObject getReservaByID(int pID){
         DatabaseX database = getDatabase();
-        ReservaViewObject reservaobj = new ReservaViewObject();
+        ReservaObject reservaobj = new ReservaObject();
         String sql = "SELECT * FROM freya1.reservas "
                 + "WHERE idreserva = '"+pID+"';";
         ResultSet result = database.executeQuery(sql);

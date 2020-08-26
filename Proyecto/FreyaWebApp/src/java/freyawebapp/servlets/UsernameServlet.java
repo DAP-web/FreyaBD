@@ -20,7 +20,7 @@ public class UsernameServlet extends HttpServlet {
                 + "autoReconnect=true&useSSL=false";
         String strformid = request.getParameter("formid");
         String strEmail, strPassword, message, strName, strLastName, strLoginName;
-        int rows, identifier;
+        int rows, identifier, id;
         
         UsersLogic logic;
         
@@ -67,10 +67,13 @@ public class UsernameServlet extends HttpServlet {
                 if (adminobject!=null){
                     if(adminobject.getPassword().equals(strPassword)) {
                         System.out.println("Es un cliente.");
+                        
+                        id = adminobject.getId();
                         strName = adminobject.getName();
                         strLastName = adminobject.getLastname();
                         strLoginName = strName+" "+strLastName;
                         
+                        request.getSession().setAttribute("id", id);
                         request.getSession().setAttribute("LoginName", strLoginName);
                         response.sendRedirect("index_admin.jsp");
                         

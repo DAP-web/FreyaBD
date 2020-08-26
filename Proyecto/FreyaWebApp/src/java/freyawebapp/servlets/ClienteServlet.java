@@ -183,6 +183,9 @@ public class ClienteServlet extends HttpServlet {
                 
                 strLoginName = strName+" "+strLastName;
                 
+                message = null;
+                    
+                request.getSession().setAttribute("message1", message);  
                 request.getSession().setAttribute("LoginName", strLoginName);
                 request.getSession().setAttribute("clientobj", clientobj);
                 response.sendRedirect("index_cliente.jsp");

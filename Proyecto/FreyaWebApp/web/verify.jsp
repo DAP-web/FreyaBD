@@ -1,6 +1,6 @@
 <%-- 
-    Document   : index_admin
-    Created on : Aug 16, 2020, 2:26:30 PM
+    Document   : verify
+    Created on : Aug 26, 2020, 1:03:38 PM
     Author     : Diego Portillo
 --%>
 
@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Freya</title>
+        <title>Verify your identity</title>
         <style>
             h1{
                 color: #000000;
@@ -29,29 +29,25 @@
         </style>
     </head>
     <body bgcolor="#FFDAB9">
-        
-        <h1>Freya BD website for Administrators</h1>
-        <br><br>
+        <h1>Verify your identity</h1>
         <%
-        String login = (String)request.getSession().getAttribute("LoginName");
-        if (!(login.equals(null))) {
+        String mensaje = (String)request.getSession().getAttribute("mensaje2");
+        if (!(mensaje.equals(null))){
         %>
-        <footer>
-            <p>Welcome <%= login %><br>
-            <a href="adminlogin.jsp">Log out</a></p>
-        </footer>
-        
+        <p style="color:darkred"><%= mensaje %></p>
         <%
         }
         %>
-        <a href="verify1.jsp">Actualizar administrador</a>
         <br><br>
-        <a href="ClienteServlet?formid=3">Go to client</a>
-        <br><br>
-        <a href="RestauranteServlet?formid=3">Go to restaurant</a>
-        <br><br><br>
-        <a href="verify.jsp">Agregar nuevo administrador</a>
-
-        
+        <form action="AdminServlet" method="post" style="color:#000000">
+            Name:<br>
+            <input type="text" id="name" name="name" required/>
+            <br><br>
+            Password:<br>
+            <input type="password" id="password" name="password" required/>
+            <br><br>
+            <input type="submit" value="Send" />
+            <input type="hidden" name="formid" value="7" />
+        </form>
     </body>
 </html>
