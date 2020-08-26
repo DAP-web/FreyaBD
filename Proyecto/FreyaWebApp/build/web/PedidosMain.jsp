@@ -32,13 +32,14 @@
     </head>
      <%
             int rows = (int)request.getSession().getAttribute("rows");
-            ArrayList<PedidosViewObject> array = (ArrayList<PedidosViewObject>)request.getSession().getAttribute("PedidosArray");
-        %>
+            ArrayList<PedidosViewObject> array = 
+                    (ArrayList<PedidosViewObject>)request.getSession().
+                            getAttribute("pedidosArray");
+    %>
     <body bgcolor="#FFDAB9" >
         
         <h1>Pedidos</h1>
          <h3>Cliente y platillo</h3>
-        <p>Aquí irá una view que permita ver y modificar los pedios de los cliente</p>
         <br><br>
         <a href="PedidosServlet?formid=6" style="font-size: 1.25em">Nuevo Pedido</a>
         <br><br>
@@ -56,9 +57,9 @@
             <th>Client Last Name</th>
             <th>Client Name</th>
             <th>Plato</th>
-            <th <!--colspan="2"-->Acciones</th>
+            <th>Acciones</th>
           </tr>
-                    <%
+        <%
               Iterator<PedidosViewObject> iteArray= null;
               if(array!=null)
               {
@@ -67,12 +68,11 @@
                   while(iteArray.hasNext())
                   {
                       temp = iteArray.next();
-          %>
+        %>
                <tr>
                <td><%= temp.getLastName() %></td>
                <td><%= temp.getName() %></td>
-               <td style="text-align:center"><%= temp.getNombrePlato() %></td><!--
-               <td><a href="SectionServlet?formid=4&id=<%= temp.getPedidosID() %>">Update</a></td>-->
+               <td style="text-align:left"><%= temp.getNombrePlato() %></td>
                <td><a href="PedidosServlet?formid=2&id=<%= temp.getPedidosID() %>">Delete</a></td>
                </tr> 
           <%

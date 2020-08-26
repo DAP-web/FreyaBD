@@ -25,9 +25,9 @@ public class PedidosLogic extends Logic {
     public int insertNewPedido(int pIdCliente, int pIdPlato)
     {
         DatabaseX database = getDatabase();
-        String sql =  "INSERT INTO `freya1`.`reservas` "
-                + "(`idpedidos`, `idCliente`, `idPlatillos`,) "
-                + "VALUES (0, '"+pIdCliente+"', '"+pIdPlato+"'');";
+        String sql = "INSERT INTO `freya1`.`pedidos` "
+                + "(`idpedido`, `idCliente`, `idPlato`) "
+                + "VALUES (0, '"+pIdCliente+"', '"+pIdPlato+"');";
         int rows = database.executeNonQueryRows(sql);
         return rows;       
     }
@@ -51,7 +51,7 @@ public class PedidosLogic extends Logic {
         {
             try
             {
-                 int idpedido;
+                int idpedido;
                 String lastName;
                 String name;
                 String nombrePlatillo; 
@@ -60,7 +60,7 @@ public class PedidosLogic extends Logic {
                 
                 while (result.next())
                 {
-                    idpedido = result.getInt("idpedido");
+                    idpedido = result.getInt("pedidoID");
                     lastName = result.getString("lastName");
                     name = result.getString("name");
                     nombrePlatillo = result.getString("nombrePlatillo");
@@ -78,11 +78,11 @@ public class PedidosLogic extends Logic {
         
     }
     
-    public PedidosObject getPedidoByID (int pID) throws SQLException{
+    public PedidosObject getPedidoByID (int pID){
         DatabaseX database = getDatabase();
         PedidosViewObject pedidobj = new PedidosViewObject();
         String sql = "SELECT * FROM freya1.pedidos "
-                + "WHERE idpedido = '"+pID+"';";
+                + "WHERE `idpedido` = '"+pID+"';";
         ResultSet result = database.executeQuery(sql);
         
         PedidosObject temp = null;
@@ -105,8 +105,7 @@ public class PedidosLogic extends Logic {
             }
         }
             return temp;
-        
-      
+             
     }
      public int updatePedido(int pIDPedido, int pIDCliente, String pNombrePlatillos){
          DatabaseX database = getDatabase();
