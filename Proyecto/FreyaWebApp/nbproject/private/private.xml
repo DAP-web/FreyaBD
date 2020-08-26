@@ -3,7 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Diego%20Portillo/Documents/GitHub/FreyaBD/Proyecto/FreyaWebApp/web/restaurantMain.jsp</file>
+            <file>file:/C:/Users/Diego%20Portillo/Documents/GitHub/FreyaBD/Proyecto/FreyaWebApp/web/newPedido.jsp</file>
+            <file>file:/C:/Users/Diego%20Portillo/Documents/GitHub/FreyaBD/Proyecto/FreyaWebApp/src/java/freyawebapp/servlets/PedidosServlet.java</file>
+            <file>file:/C:/Users/Diego%20Portillo/Documents/GitHub/FreyaBD/Proyecto/FreyaWebApp/web/index_cliente.jsp</file>
+            <file>file:/C:/Users/Diego%20Portillo/Documents/GitHub/FreyaBD/Proyecto/FreyaWebApp/src/java/freyawebapp/logic/PedidosLogic.java</file>
         </group>
     </open-files>
 </project-private>
