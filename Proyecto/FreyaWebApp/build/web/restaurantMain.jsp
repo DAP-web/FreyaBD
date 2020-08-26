@@ -45,7 +45,7 @@
         <br><br>
         <a href="clienteplatilloMain.jsp" style="font-size: 1.5em">Ver pedidos</a>
         <br><br>
-        <a href="facturacomplete.jsp" style="font-size: 1.5em">Ver Facturas</a>
+        <a href="FacturasServlet?formid=2" style="font-size: 1.5em">Ver Facturas</a>
         <br><br>
     <%
     if (rows>0){

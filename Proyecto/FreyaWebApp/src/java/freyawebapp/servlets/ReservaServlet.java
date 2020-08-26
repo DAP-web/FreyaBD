@@ -24,12 +24,13 @@ public class ReservaServlet extends HttpServlet {
                 + "user=root&password=12345&"
                 + "autoReconnect=true&useSSL=false";
         String strformid = request.getParameter("formid");
-        ReservaLogic logic;
+        
         request.getSession().setAttribute("rows", 0);
         
         String strIdreserva, strIdcliente, strIdmesa, strHoraReserva;
         int iIdreserva, iIdcliente, iIdmesa, rows;
         
+        ReservaLogic logic;
         ClientLogic clientLogic;
         MesasLogic mesasLogic;
                 
