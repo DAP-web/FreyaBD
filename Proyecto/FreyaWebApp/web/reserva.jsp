@@ -39,8 +39,6 @@
     <body bgcolor="#FFDAB9">
         <h1>Reservas</h1>
         <h3>Cliente, mesa y hora de reserva</h3>
-        <p>Aquí irá una view que permita ver y modificar las reservas de las mesas 
-        que los clientes han hecho.</p>
         <br><br>
         <a href="ReservaServlet?formid=6" style="font-size: 1.25em">Nueva Reserva</a>
         <br><br>
@@ -79,7 +77,7 @@
                       <td style="text-align:center"><%= temp.getTableID() %></td>
                       <td style="text-align:center"><%= temp.getHoraReserva() %></td><!--
                       <td><a href="SectionServlet?formid=4&id=<%= temp.getReservaID() %>">Update</a></td>-->
-                      <td><a href="ReservaServlet?formid=2&id=<%= temp.getReservaID()%>">Delete</a></td>
+                      <td><a href="ReservaServlet?formid=3&id=<%= temp.getReservaID()%>">Delete</a></td>
                     </tr>
           <%
                    }
