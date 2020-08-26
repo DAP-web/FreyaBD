@@ -32,6 +32,14 @@ public class PedidosLogic extends Logic {
         return rows;       
     }
     
+    public int deletePedidos (int pIdpedidos){
+        DatabaseX database = getDatabase();
+        String sql = "DELETE FROM `freya1`.`pedidos` "
+                + "WHERE (`idpedido` = '"+pIdpedidos+"');";
+        int rows = database.executeNonQueryRows(sql);
+        return rows;
+    }
+    
     public ArrayList<PedidosViewObject> getAllPedidos()
     {
         DatabaseX database = getDatabase();
