@@ -39,6 +39,7 @@ public class AdminServlet extends HttpServlet {
                 strLastName = request.getParameter("lastname");
                 strEmail = request.getParameter("email");
                 strPassword = request.getParameter("password");
+                String login = strName+" "+strLastName;
                 
                 //nNumeroTelefono = request.getParameter(nName)
                 
@@ -47,7 +48,7 @@ public class AdminServlet extends HttpServlet {
                 rows = logic.insertNewAdmin (strName, strLastName, strEmail, strPassword);
                 
                 //PREGUNTAR ESTA ULTIMA PARTE DE GETSESSION
-                request.getSession().setAttribute("LoginName", strLastName);
+                request.getSession().setAttribute("LoginName", login);
                 request.getSession().setAttribute("rows", rows);
                 response.sendRedirect("index_admin.jsp");
             break;

@@ -77,7 +77,7 @@
                       <td style="text-align:center"><%= temp.getTableID() %></td>
                       <td style="text-align:center"><%= temp.getHoraReserva() %></td><!--
                       <td><a href="SectionServlet?formid=4&id=<%= temp.getReservaID() %>">Update</a></td>-->
-                      <td><a href="ReservaServlet?formid=3&id=<%= temp.getReservaID()%>">Delete</a></td>
+                      <td><a href="ReservaServlet?formid=2&id=<%= temp.getReservaID()%>">Delete</a></td>
                     </tr>
           <%
                    }

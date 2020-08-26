@@ -32,11 +32,11 @@
         <h1>Verify your identity</h1>
         <%
         String mensaje = (String)request.getSession().getAttribute("mensaje2");
-        if (!(mensaje.equals(null))){
+        //if (!(mensaje.equals(null))){
         %>
         <p style="color:darkred"><%= mensaje %></p>
         <%
-        }
+       // }
         %>
         <br><br>
         <form action="AdminServlet" method="post" style="color:#000000">
