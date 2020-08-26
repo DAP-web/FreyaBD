@@ -18,6 +18,10 @@ public class AdminObject {
         setPassword(pPassword);
     }
 
+    public AdminObject(int iIdAdmin, String strName, String strLastName, String strEmail) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int getId() {
         return id;
     }
