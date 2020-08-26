@@ -31,7 +31,7 @@
             }
         </style>
     </head>
-        <%
+    <%
         ArrayList<ClientObject> clientArray = 
                 (ArrayList<ClientObject>) request.getSession()
                         .getAttribute("clientArray");
@@ -41,7 +41,6 @@
     %>
     <body bgcolor="#FFDAB9">
         <h1>Nuevo Pedido</h1>
-         <h1>Nueva Pedido</h1>
         <br>
         <form action="PedidosServlet" method="post">
             <%
@@ -51,25 +50,26 @@
             <br>
             <select id="lastname" name="lastname" required>
               <option value="">--</option>
-                           <%
+            <%
                   if(iteClient!=null)
                   {
                       ClientObject temp;
                       while(iteClient.hasNext())
                       {
                           temp = iteClient.next();
-              %>
+            %>
                     <option value="<%= temp.getId() %>"><%= temp.getLastname() %></option>
-              <%
+            <%
                       }
                   }
-              %>
+            %>
             </select>            
             <br><br>
             <%
                 Iterator<PlatilloObject> itePlatillos = platilloArray.iterator();
             %>
-                        <label for="nombrePlatillo">Nombre del platillo:</label>
+            
+            <label for="nombrePlatillo">Nombre del platillo:</label>
             <br>
             <select id="numeroPlatillo" name="numeroPlatillo" required>
               <option value="">--</option>
@@ -82,11 +82,15 @@
                       {
                           temp = itePlatillos.next();
               %>
-              <option value="<%= temp.getId() %>"><%= temp.getId() %></option>
+              <option value="<%= temp.getId() %>"><%= temp.getName() %></option>
               <%
                       }
                   }
               %>
+            </select>   
+            <br><br>
+            <input type="submit" value="Send" />
+            <input type="hidden" name="formid" value="1" />
          </form>
     </body>
 </html>

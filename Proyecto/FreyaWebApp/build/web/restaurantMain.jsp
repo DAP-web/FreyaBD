@@ -43,7 +43,7 @@
         <br><br>
         <a href="ReservaServlet?formid=3" style="font-size: 1.5em">Ver reservas</a>
         <br><br>
-        <a href="clienteplatilloMain.jsp" style="font-size: 1.5em">Ver pedidos</a>
+        <a href="PedidosServlet?formid=3" style="font-size: 1.5em">Ver pedidos</a>
         <br><br>
         <a href="FacturasServlet?formid=2" style="font-size: 1.5em">Ver Facturas</a>
         <br><br>

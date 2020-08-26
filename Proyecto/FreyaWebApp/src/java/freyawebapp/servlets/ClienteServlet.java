@@ -4,7 +4,6 @@ import freyawebapp.logic.ClientLogic;
 import freyawebapp.logic.UsersLogic;
 import freyawebapp.objects.ClientObject;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
